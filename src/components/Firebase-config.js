@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { collection, doc, addDoc, setDoc } from "firebase/firestore"; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAU_Or5QzwZcJEfwUIr2Db2d3O1bVpMvl0",
@@ -11,22 +14,56 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
 
-const provider = new GoogleAuthProvider()
+export const db = getFirestore(app);
 
+const provider = new GoogleAuthProvider();
 
+export const auth = getAuth();
 
-export const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then ((result) => {
-        const name = result.user.displayName;
-        const email = result.user.email;
-        const profilePic = result.user.photoURL;
+console.log(auth)
 
-        localStorage.setItem("name", name)
-        localStorage.setItem("email", email)
-        localStorage.setItem("profilePic", profilePic)
-    }).catch((error) => {
-        console.log(error);
-    });
-};
+export const signInGoogle = () => { 
+    signInWithPopup(auth, provider)
+        .then( async (result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user)
+        try {
+            const docRef = await setDoc(doc(db, "users", user.uid), {
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+                score: 0,
+                pokeball: 0
+            }, { merge: true });
+            console.log("Document written with ID: ", user.uid);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+
+        
+
+        
+}
+
+export const signOutGoogle = () => {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        }).catch((error) => {
+        // An error happened.
+        });
+}
+
