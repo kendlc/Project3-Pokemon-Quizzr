@@ -7,7 +7,6 @@ import PokeProfile from './PokeProfile';
 import PokeQuiz from './PokeQuiz';
 import PokeShop from './PokeShop';
 import Leaderboard from './Leaderboard';
-import Header from './Header';
 import Navigation from './Navigation';
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Header />
       <Navigation />
         <Routes>
           <Route exact path="/" element={ <Home /> } />

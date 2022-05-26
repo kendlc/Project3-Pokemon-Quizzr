@@ -6,6 +6,7 @@ import { collection, doc, addDoc, setDoc } from "firebase/firestore";
 import { firebaseConfig } from "./Firebase-config";
 import { useNavigate } from "react-router-dom";
 import { isAuth } from "./Firebase-config";
+import { Container, Button } from "bootstrap";
 
 const Authentication = () => {
     const app = initializeApp(firebaseConfig);
@@ -38,7 +39,7 @@ const Authentication = () => {
           } catch (e) {
             console.error("Error adding document: ", e);
           };
-        navigate('/');
+        navigate('/pokequiz');
         }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -67,10 +68,10 @@ const Authentication = () => {
     return(
         <div>
             { !isAuth() &&
-                <button onClick={_handleSignIn}> Sign In </button>
+                <button  className="btn btn-secondary" onClick={_handleSignIn}> Sign In </button>
             }
             { isAuth() &&
-                <button onClick={_handleSignOut}> Sign Out</button>
+                <button className="btn btn-secondary" onClick={_handleSignOut}> Sign Out</button>
             }
         </div>
     );
