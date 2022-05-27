@@ -7,7 +7,7 @@ import Leaderboard from "./Leaderboard";
 const Home = () => {
 
     return(
-        <Container> 
+        <Container > 
             <Row className="mb-5 mx-auto">
                 <Col sm className="mt-5 d-flex justify-content-lg-end justify-content-center">
                     <img src="./images/pikachu.webp" width={300} className="img-fluid mr-5"/>
