@@ -1,11 +1,12 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 const PokeShop = () => {
 
     return(
-        <div>
+        <Container>
             PokeShop coming soon
-        </div>
+        </Container>
     );
 };
 

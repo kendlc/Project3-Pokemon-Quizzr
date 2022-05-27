@@ -52,26 +52,37 @@ const Authentication = () => {
         
     };
 
-    const _handleSignOut = () => {
-        signOut(auth).then(() => {
-            localStorage.removeItem('token');
-            navigate('/')
+    // const _handleSignOut = () => {
+    //     signOut(auth).then(() => {
+    //         localStorage.removeItem('token');
+    //         navigate('/')
 
-            // Sign-out successful.
-            }).catch((error) => {
-            // An error happened.
-            });
-    };
+    //         // Sign-out successful.
+    //         }).catch((error) => {
+    //         // An error happened.
+    //         });
+    // };
+
+    const _handlePlay = () => {
+        navigate('/pokequiz')
+    }
 
     
 
     return(
         <div>
+
             { !isAuth() &&
-                <button  className="btn btn-secondary" onClick={_handleSignIn}> Sign In </button>
+                <>
+                    <h1> Sign In to Quiz! </h1>
+                    <button  className="btn btn-secondary" onClick={_handleSignIn}> Sign In </button>
+                </>
             }
             { isAuth() &&
-                <button className="btn btn-secondary" onClick={_handleSignOut}> Sign Out</button>
+                <>
+                    <h2> Start Quizzing! </h2>
+                    <button className="btn btn-secondary" onClick={_handlePlay}> Play PokeQuiz </button>
+                </>
             }
         </div>
     );

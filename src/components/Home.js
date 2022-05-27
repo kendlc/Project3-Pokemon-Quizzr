@@ -10,12 +10,14 @@ const Home = () => {
         <Container> 
             <Row className="mb-5 mx-auto">
                 <Col sm className="mt-5 d-flex justify-content-lg-end justify-content-center">
-                    <img src="./images/pikachu.webp" width={300} className="mr-5"/>
+                    <img src="./images/pikachu.webp" width={300} className="img-fluid mr-5"/>
                 </Col>
-                <Col sm className="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, ducimus labore id nisi ad molestias iusto nobis dolore, vel soluta a atque officia voluptatem. Earum repellendus quis dolorum sunt non.</p>
-                    <div>
-                        <h2 >Sign In to Quiz!</h2>
+                <Col className="mt-5">
+                        <p className="text-sm-left">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, ducimus labore id nisi ad molestias iusto nobis dolore, vel soluta a 
+                        atque officia voluptatem. Earum repellendus quis dolorum sunt non.
+                        </p>
+                    <div className="d-flex mt-5 justify-content-center justify-content-sm-start">
                         <Authentication />
                     </div>
 
