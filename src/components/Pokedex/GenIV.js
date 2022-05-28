@@ -2,24 +2,17 @@ import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { Card,Button, Container, Modal, Row, Col } from "react-bootstrap";
 
-const GenI = () => {
+const GenII = () => {
     const [pokemon, setPokemon] = useState([]);
-    const [pokemon2, setPokemon2] = useState([]);
-
     const [modalShow, setModalShow] = useState(false);
     const [pokeData, setPokeData] = useState('');
 
-    const [switch2, setSwitch2] = useState(false);
-
     useEffect( () => {
-        if (pokemon.length <= 151){
-            getPoke();
-            getPoke2();
-        }
+            getPoke()
     },[])
 
     const getPoke =  () => {
-        for (let i = 1; i <= 78; i++ ){
+        for (let i = 387; i <= 493; i++ ){
             axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(
                 async (result) => {
                    await setPokemon((prev) => ([ ...prev, result.data ]))
@@ -28,52 +21,10 @@ const GenI = () => {
         }
     }
 
-    const getPoke2 =  () => {
-        for (let i = 79; i <= 151; i++ ){
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(
-                async (result) => {
-                   await setPokemon2((prev) => ([ ...prev, result.data ]))
-                }
-            )
-
-        }
-    }
-
     return (
-        <Container>
         <Container className="d-flex align-content-stretch flex-wrap">
             {
                 pokemon.sort().map( (pmon) => {
-                    return  (    
-                                <Card key={Math.random()}
-                                style={{ width: '11rem',height: '16rem', backgroundColor: 'rgba(255, 215, 255, 0.1)', margin: '1rem'  }}
-                                onClick={() => {
-                                    setPokeData(pmon)
-                                    setModalShow(true)
-                                    }
-                                }>
-
-                                <Card.Img variant="bottom" className="align-self-center" style={{ objectFit: 'contain', padding: '.3rem'}} src={pmon.sprites.other["official-artwork"]["front_default"]} />                
-                                    <Card.Body className="align-top p-2">
-                                        <Card.Title className="align-text-center text-capitalize d-flex justify-content-center">{pmon.name}</Card.Title>
-                                        <Container
-                                        className="d-flex justify-content-center">
-                                            <Button variant="outline-primary" className="btn-sm text-capitalize mx-1" disabled>{
-                                                pmon.types[0].type.name
-                                                }</Button>
-                                            { pmon.types[1] &&
-                                                <Button variant="outline-danger" className="btn-sm text-capitalize" disabled>{
-                                                    pmon.types[1].type.name
-                                                    }</Button>
-                                            }
-                                        </Container>
-                                    </Card.Body>
-                                </Card>
-                            )   
-                })
-            }
-            { switch2 &&
-                pokemon2.sort().map( (pmon) => {
                     return  (    
                                 <Card key={Math.random()}
                                 style={{ width: '11rem',height: '16rem', backgroundColor: 'rgba(255, 215, 255, 0.1)', margin: '1rem'  }}
@@ -108,12 +59,6 @@ const GenI = () => {
                 pdata={pokeData}
             />
         </Container>
-        <Container className="text-center">
-            <Button variant="secondary m-4 btn-lg"
-            onClick={ () => setSwitch2(true) }>Show More</Button>
-        </Container>
-        
-        </Container>
     );
 };
 
@@ -128,9 +73,9 @@ const MyVerticallyCenteredModal = (props) => {
     },[props.pdata])
 
     const pokeEntry = () => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || '151'}`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || ''}`)
         .then( ({data}) => {
-            setFlavorText(data.flavor_text_entries[71].flavor_text);
+            setFlavorText(data.flavor_text_entries[50].flavor_text);
             setEgg(data.egg_groups);
             setType(props.pdata.types)
             setGenus(data.genera[7].genus)
@@ -207,7 +152,7 @@ const MyVerticallyCenteredModal = (props) => {
     );
   }
 
-export default GenI;
+export default GenII;
 
 // <Card className="bg-dark text-white card h-200">
                                 // <Card.Img src={x.sprites.versions["generation-v"]["black-white"].animated.front_shiny} alt="Card image" />

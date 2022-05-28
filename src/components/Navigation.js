@@ -68,7 +68,7 @@ const Navigation = () => {
 
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar sticky="top" bg="light" expand="lg">
         <Container>
             <Navbar.Brand href="/"><img src="/images/pokemonlogo.png" className="img-fluid" width={150} /><img src="/images/quizzr.png" className="img-fluid" width={100} /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

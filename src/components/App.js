@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
-import Pokedex from './Pokedex';
+import Pokedex from './Pokedex/Pokedex';
 import Pokemon from './Pokemon';
 import PokeProfile from './PokeProfile';
 import PokeQuiz from './PokeQuiz';

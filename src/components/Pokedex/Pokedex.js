@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container } from "react-bootstrap";
-import Display from "./Display";
+import { Container, Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+import Display from "../Display";
 import GenI from "./GenI";
 import GenII from "./GenII";
+import GenIII from "./GenIII";
+import GenIV from "./GenIV";
+import GenV from "./GenV";
+import GenVI from "./GenVI";
+import GenVII from "./GenVII";
+import GenVIII from "./GenVIII";
+
+
 
 const Pokedex = () => {
 
@@ -14,9 +22,30 @@ const Pokedex = () => {
     }
 
     return (
-        <div>
-            <label>Select Generation</label>
-            <select name="Gen" value={genSelected} onChange={_handleGenSelect}>
+        <Container>
+        <Navbar expand="lg">
+        <Container>
+            <Nav className="mr-5">
+            <Navbar.Text className="align-text-top" style={{fontSize: '3rem'}}>POKEDEX</ Navbar.Text>
+            </Nav>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+
+            <Nav className="justify-content-start flex-grow-1 pe-3 ">
+            <Form className="d-flex">
+              <FormControl
+                type="search"
+                placeholder="Pokemon Name or Number"
+                className="me-2 mx-5"
+                style={{width: '15rem'}}
+                aria-label="Search"
+              />
+              <Button variant="outline-secondary">Search</Button>
+            </Form >
+            <Nav className="mx-5">
+            <Navbar.Text>Select Generation:</ Navbar.Text>
+            <Form.Select aria-label="Default select example" style={{width: '10rem'}}
+            name="Gen" value={genSelected} onChange={_handleGenSelect}>
                 <option value="1">Gen I</option>
                 <option value="2">Gen II</option>
                 <option value="3">Gen III</option>
@@ -25,16 +54,41 @@ const Pokedex = () => {
                 <option value="6">Gen VI </option>
                 <option value="7">Gen VII</option>
                 <option value="8">Gen VIII</option>
-            </select>
+            </Form.Select>
+            </Nav>
+                {/* <Nav.Link href="/#/pokedex">Pokedex</Nav.Link>
+                <Nav.Link href="/#/pokequiz">PokeQuiz</Nav.Link>
+                <Nav.Link href="/#/leaderboard">Leaderboard</Nav.Link> */}
+            </Nav>
+
+            </Navbar.Collapse>
+        </Container>
+        </Navbar>
             { genSelected === "1" &&
                 <GenI />
             }
             { genSelected === "2" &&
                 <GenII />
             }
-
-
-        </div>
+            { genSelected === "3" &&
+                <GenIII />
+            }
+            { genSelected === "4" &&
+                <GenIV />
+            }
+            { genSelected === "5" &&
+                <GenV />
+            }
+            { genSelected === "6" &&
+                <GenVI />
+            }
+            { genSelected === "7" &&
+                <GenVII />
+            }
+            { genSelected === "8" &&
+                <GenVIII />
+            }
+        </Container>
     );
 };
 
