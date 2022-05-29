@@ -1,4 +1,4 @@
-img {
+img .question-text {
   transition: all 0.3s;
 }
 
@@ -6,3 +6,35 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+
+.mask {
+  filter: brightness(0);
+}
+
+.unmask {
+  filter: brightness(1);
+}
+
+.question-text {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s, opacity 0.5s linear;
+}
+
+/* .question-text {
+  width:200px;
+  height: 200px;
+  background: red;
+  -webkit-animation: fadeinout 4s linear forwards;
+  animation: fadeinout 4s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+0%,100% { opacity: 0; }
+50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+0%,100% { opacity: 0; }
+50% { opacity: 1; }
+} */
