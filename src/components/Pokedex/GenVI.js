@@ -67,7 +67,6 @@ const GenII = () => {
 const MyVerticallyCenteredModal = (props) => {
     const [flavorText, setFlavorText] = useState('')
     const [egg, setEgg] = useState([])
-    const [type, setType] = useState([])
     const [genus, setGenus] = useState('')
 
     useEffect( () => {
@@ -79,7 +78,6 @@ const MyVerticallyCenteredModal = (props) => {
         .then( ({data}) => {
             setFlavorText(data.flavor_text_entries[22].flavor_text);
             setEgg(data.egg_groups);
-            setType(props.pdata.types)
             setGenus(data.genera[7].genus)
         })
     }
@@ -155,19 +153,3 @@ const MyVerticallyCenteredModal = (props) => {
   }
 
 export default GenII;
-
-// <Card className="bg-dark text-white card h-200">
-                                // <Card.Img src={x.sprites.versions["generation-v"]["black-white"].animated.front_shiny} alt="Card image" />
-                                // <Card.ImgOverlay>
-                                //     <Card.Title>{x.name}</Card.Title>
-                                // </Card.ImgOverlay>
-                                // </Card>
-
-                                    // const pokeEntry = () => {
-    //     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.id}`)
-    //     .then( (results) => {
-    //         setPokeText(results.data)
-    //     })
-    // }
-
-    // .name.charAt(0).toUpperCase() + props.pdata.name.slice(1)

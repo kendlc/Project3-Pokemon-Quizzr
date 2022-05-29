@@ -8,8 +8,8 @@ const Home = () => {
 
     return(
         <Container > 
-            <Row className="mb-5 mx-auto">
-                <Col sm className="mt-5 d-flex justify-content-lg-end justify-content-center">
+            <Row className=" mx-auto">
+                <Col sm className="mt-4 d-flex justify-content-lg-end justify-content-center">
                     <img src="./images/pikachu.webp" width={300} className="img-fluid mr-5"/>
                 </Col>
                 <Col className="mt-5">
@@ -25,10 +25,10 @@ const Home = () => {
             </Row>
             <Container>
                 <Row>
-                    <Col sm className="mt-5 mx-auto d-flex justify-content-center">
+                    <Col sm className="mt-3 mx-auto d-flex justify-content-center">
                         <FeaturedPokemons />
                     </Col>
-                    <Col sm className="mt-5 mx-auto d-flex justify-content-center">
+                    <Col sm className="mt-3 mx-auto d-flex justify-content-center">
                         <Leaderboard />
                     </Col>
                 </Row>
