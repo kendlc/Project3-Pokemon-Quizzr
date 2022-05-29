@@ -103,19 +103,34 @@ const QuizGenI = () => {
                                 pokeQuest[currentQuestion].image
                                 : ''
                             } />
-                            
-                            {/* {
-                        pokeQuest[currentQuestion] ?
-                        pokeQuest[currentQuestion].questionText
-                        : ''
-                        } */}
+                            <div style={{minHeight: '120px'}}>
+                                <div className="collapse collapse-horizontal" id="collapseWidthExample">
+                                    <div className="card card-body" style={{width: '300px'}}>
+                                        <h2>
+                                        {
+                                            pokeQuest[currentQuestion] ?
+                                            pokeQuest[currentQuestion].questionText
+                                        : ''
+                                        }
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 					</div>
                     { pokeQuest[currentQuestion] && 
 					<div className='answer-section'>
 						{
-                        pokeQuest[currentQuestion].answerOptions.map((answerOption) => (
-							<button key={Math.random()} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                        pokeQuest[currentQuestion].answerOptions.map(value => ({ value, sort: Math.random() }))
+                        .sort((a, b) => a.sort - b.sort)
+                        .map(({ value }) => value).map((answerOption) => (
+							<button 
+                            key={Math.random()} 
+                            onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
+                            class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"
+                            >
+                            {answerOption.answerText}
+                            </button>
 						))}
 					</div>
                     }

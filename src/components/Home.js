@@ -24,7 +24,10 @@ const Home = () => {
                 </Col>
             </Row>
             <Container>
-                <Row>
+                <Row className="mt-1">
+                    <h4 style={{color: 'gray'}}>
+                        Featured Pokemon
+                    </h4>
                     <Col sm className="mt-3 mx-auto d-flex justify-content-center">
                         <FeaturedPokemons />
                     </Col>

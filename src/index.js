@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 // import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 // import Home from './components/Home';

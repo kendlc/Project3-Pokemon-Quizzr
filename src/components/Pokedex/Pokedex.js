@@ -10,11 +10,12 @@ import GenV from "./GenV";
 import GenVI from "./GenVI";
 import GenVII from "./GenVII";
 import GenVIII from "./GenVIII";
+import FeaturedPokemons from "../FeaturedPokemons";
 
 
 
 const Pokedex = () => {    
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('pikachu');
     const [pokeSearch, setPokeSearch] = useState('');
     const [genSelected, setGenSelected] = useState("-")
     const [modalShow, setModalShow] = useState(false);
@@ -97,18 +98,30 @@ const Pokedex = () => {
             </Navbar>
 
             { genSelected === "-" &&
-                <Container style={{height: '70vh'}} className="mt-5 d-flex justify-content-center">
+                <Container style={{height: '100%'}} className="mt-5">
                     <Row
-                    className="mt-2">
-                        <Col sm={5} className="d-flex mt-5 justify-content-center justify-content-sm-end">
+                    className="mt-2 mb-5">
+                        <Col sm={5} 
+                        className="d-flex mt-5 justify-content-center justify-content-sm-end">
                             <div>
-                            <h1 style={{textAlign: 'right'}}>Start</h1>
+                            <h1 className="text-center text-sm-end">Start</h1>
                             <h1>Researchin'!</h1>
                             </div>
                         </Col>
                         <Col sm={7}>
-                            <img src="./images/pikachu.webp" width={500} className="img-fluid mr-5"/>
+                            <img src="./images/pikachu.webp" 
+                            width={500} 
+                            className="img-fluid mr-5"/>
                         </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <FeaturedPokemons />
+                        </Col>
+                        <Col >
+                            <FeaturedPokemons />
+                        </Col>
+
                     </Row>
                 </Container>
             }
@@ -191,8 +204,8 @@ const MyVerticallyCenteredModal = (props) => {
             centered
       >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                { props.pdata ? `# ${ props.pdata.id} ${ props.pdata.name.charAt(0).toUpperCase() + props.pdata.name.slice(1) }` : ''}
+                <Modal.Title id="contained-modal-title-vcenter text-capitalize">
+                { props.pdata ? `# ${ props.pdata.id} ${ props.pdata.name.charAt(0).toUpperCase() + props.pdata.name.slice(1)}` : ''}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

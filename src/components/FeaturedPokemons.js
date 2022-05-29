@@ -26,7 +26,6 @@ const FeaturedPokemons = () => {
 
     return (
         <div style={{width: '100%'}}>
-            <h4>Featured Pokemon</h4>
             <Carousel variant="dark" interval={2000}>
                 { pokeEntry.map( (poke) => {
                     return (

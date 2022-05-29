@@ -10,7 +10,7 @@ import Leaderboard from './Leaderboard';
 import Navigation from './Navigation';
 import './App.css';
 import { Container } from 'react-bootstrap';
-import Footer from '../Footer';
+import Footer from './Footer';
 
 const bg = {
   height: '100%',
@@ -40,7 +40,7 @@ function App() {
                 <Route path="/leaderboard" element={ <Leaderboard />} />
               </Routes>
           </ Container>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
     </div>
   );
