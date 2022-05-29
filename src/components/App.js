@@ -4,12 +4,13 @@ import Home from './Home';
 import Pokedex from './Pokedex/Pokedex';
 import Pokemon from './Pokemon';
 import PokeProfile from './PokeProfile';
-import PokeQuiz from './PokeQuiz';
+import PokeQuiz from './PokdeQuiz/PokeQuiz';
 import PokeShop from './PokeShop';
 import Leaderboard from './Leaderboard';
 import Navigation from './Navigation';
 import './App.css';
 import { Container } from 'react-bootstrap';
+import Footer from '../Footer';
 
 const bg = {
   height: '100%',
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/leaderboard" element={ <Leaderboard />} />
               </Routes>
           </ Container>
+          {/* <Footer /> */}
         </Router>
     </div>
   );

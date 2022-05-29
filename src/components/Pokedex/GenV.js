@@ -24,7 +24,7 @@ const GenI = () => {
     return (
         <Container className="d-flex align-content-stretch flex-wrap">
             {
-                pokemon.sort().map( (pmon) => {
+                pokemon.sort((a,b)=>a.id>b.id?1:-1).map( (pmon) => {
                     return  (    
                                 <Card key={Math.random()}
                                 style={{ width: '11rem',height: '16rem', backgroundColor: 'rgba(255, 215, 255, 0.1)', margin: '1rem'  }}
