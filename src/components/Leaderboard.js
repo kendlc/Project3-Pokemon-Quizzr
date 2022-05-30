@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 const Leaderboard = () => {
 
     return (
-        <Container style={{height: '100vh'}}>
+        <Container>
             Leaderboard coming soon
             <img src="http://www.fillmurray.com/400/400" />
         </Container >

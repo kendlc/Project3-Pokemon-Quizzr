@@ -8,7 +8,6 @@ import { doc, setDoc } from "firebase/firestore";
 import { firebaseConfig } from "./Firebase-config";
 import { useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
-// import pokelogo from '.../pupikachu.webp';
 
 
 const Navigation = () => {

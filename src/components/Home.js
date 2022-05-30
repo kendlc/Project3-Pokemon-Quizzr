@@ -5,7 +5,7 @@ import FeaturedPokemons from "./FeaturedPokemons";
 import Leaderboard from "./Leaderboard";
 
 const Home = () => {
-    
+
     return(
         <Container > 
             <Row className=" mx-auto">
@@ -36,6 +36,7 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
+            
         </Container>
     );
 };

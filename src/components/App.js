@@ -35,7 +35,7 @@ function App() {
   
   const cont = {
     backgroundColor: 'rgba(255, 255, 255, 0.7) ',
-    height: `100%`
+    minHeight: `87vh`
   }
 
   return (
