@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Col, Row, Container, Button, Table } from "react-bootstrap";
+import { useTimer } from 'react-timer-hook';
 
 
 
@@ -16,6 +17,12 @@ const QuizGenI = () => {
     const [score, setScore] = useState(0);
     const [pokeballs, setPokeballs] = useState(0);
     const [buttonDisable, setButtonDisable] = useState('');
+
+    const expiryTimestamp = new Date();
+    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 5);
+    const { seconds, restart,} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
+
+    
 
     // setScore(points *  (10 + Math.floor(Math.random() * 9)))
     // setPokeballs(points * 10)
@@ -70,13 +77,15 @@ const QuizGenI = () => {
                 setCurrentQuestion(nextQuestion);
                 setShowAnswer(false);
                 setButtonDisable('');
+                
 
                 if (questionNumber <= 3) {
                     setQuestionNumber(questionNumber + 1);
                 }
                 setTimeout( () => {
-    setScore(points *  (10 + Math.floor(Math.random() * 9)))
-    setPokeballs(points * 10)
+                    const time = new Date();
+                    time.setSeconds(time.getSeconds() + 5);
+                    restart(time)
                     if (nextQuestion === pokeQuest.length) {
                         setShowScore(true);
 
@@ -147,10 +156,15 @@ const QuizGenI = () => {
                             style={{width: '16rem'}}
                             />
                         </div>
-						<div className='d-flex justify-content-around pokeText1'>
-							<span>Q &nbsp;{questionNumber <= 5 ? questionNumber + 1 : '5'}&nbsp; /&nbsp;5</span><span>PTS {points}</span>
-						</div>
-
+						<Row className='d-flex justify-content-around pokeText1' style={{fontSize: '4vw'}}>
+							<Col>Q &nbsp;{questionNumber <= 5 ? questionNumber + 1 : '5'}&nbsp; /&nbsp;5
+                            </Col>
+                            <Col>PTS {points}
+                            </Col>
+                            <Col >
+                                <img src="/images/clock.svg" width="35" style={{marginTop: '-8px', minWidth: '4vw'}}/> {seconds} s
+                            </Col>
+						</Row>
 						<div>
                             <div style={{background: 'url("./images/pokequiz2.png") no-repeat center center'}}
                             className='d-flex justify-content-center'>
@@ -211,7 +225,6 @@ const QuizGenI = () => {
 }
 
 export default QuizGenI;
-
 
 // shuffle
 // .map(value => ({ value, sort: Math.random() }))
