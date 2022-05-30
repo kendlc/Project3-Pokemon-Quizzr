@@ -1,10 +1,18 @@
-img .question-text {
+img {
   transition: all 0.3s;
 }
 
-
 img:hover {
   transform: scale(1.1);
+}
+
+.question-text{
+  transition: all 0.3s;
+}
+
+.footerStick {
+  position: absolute;
+  top: 0;
 }
 
 .mask {
@@ -15,11 +23,31 @@ img:hover {
   filter: brightness(1);
 }
 
-.question-text {
+
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* .question-text {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1s, opacity 0.5s linear;
-}
+  transition: visibility 0s, opacity 0.5s linear;
+} */
 
 /* .question-text {
   width:200px;

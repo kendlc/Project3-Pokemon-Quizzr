@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Pokedex from './Pokedex/Pokedex';
@@ -12,24 +12,37 @@ import './App.css';
 import { Container } from 'react-bootstrap';
 import Footer from './Footer';
 
-const bg = {
-  height: '100%',
-  background: 'url("./images/pokebg.png") no-repeat center center fixed',
-  backgroundSize: 'cover'
-}
 
-const cont = {
-  backgroundColor: 'rgba(255, 255, 255, 0.7)',
-  height: '100%'
-}
 
 function App() {
+  // const [heigh, setHeig] = useState(100)
+
+  // useEffect( () =>{
+  //   getHeigh();
+  // },[])
+
+  // const getHeigh = () => {
+  //   setHeig(window.innerHeight);
+  // }
+
+  // window.addEventListener('resize', getHeigh)
+
+  const bg = {
+    height: `100%`,
+    background: 'url("./images/pokebg.png") no-repeat center center fixed',
+    backgroundSize: 'cover'
+  }
+  
+  const cont = {
+    backgroundColor: 'rgba(255, 255, 255, 0.7) ',
+    height: `100%`
+  }
 
   return (
     <div className="App" style={bg}>
         <Router>
           <Navigation />
-          <Container style={cont}>
+          <Container style={cont} >
               <Routes>
                 <Route exact path="/" element={ <Home /> } />
                 <Route path="/pokedex" element={ <Pokedex />} />

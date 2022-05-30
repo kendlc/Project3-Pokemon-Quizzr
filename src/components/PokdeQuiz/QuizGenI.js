@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ReactCSSTransitionGroup from "react-transition-group"
+
+
 
 const QuizGenI = () => {
 
@@ -50,13 +51,20 @@ const QuizGenI = () => {
             if (nextQuestion < pokeQuest.length) {
                 setShow(true)
                 setUnmask(true)
+
                 setTimeout( () => {
-                setCurrentQuestion(nextQuestion);
-                setUnmask(false);
-                setShow(false);
-                },1500)
+                    setUnmask(false);
+                },1600)
+
+                setTimeout( () => {
+                    setCurrentQuestion(nextQuestion);
+                    setShow(false);
+                },1800)
             } else {
-                setShowScore(true);
+                setTimeout( () => {
+                    setShowScore(true)
+                }
+                ,1500)
             }
         // }, 3000)
 	};
@@ -72,10 +80,7 @@ const QuizGenI = () => {
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{pokeQuest.length}
 						</div>
-                        <ReactCSSTransitionGroup
-                        transitionName="example"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}>
+
 						<div className='question-text mb-5'>
                             <img src={
                                 pokeQuest[currentQuestion] ?
@@ -108,7 +113,6 @@ const QuizGenI = () => {
                                          : '' }
                                          
                         </div>
-                        </ReactCSSTransitionGroup>
 					</div>
                     { pokeQuest[currentQuestion] && 
 					<div className='answer-section'>

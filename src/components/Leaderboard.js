@@ -1,12 +1,13 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 const Leaderboard = () => {
 
     return (
-        <div>
+        <Container style={{height: '100vh'}}>
             Leaderboard coming soon
             <img src="http://www.fillmurray.com/400/400" />
-        </div>
+        </Container >
     );
 };
 
