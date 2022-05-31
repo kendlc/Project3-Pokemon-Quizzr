@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
-// import Pokedex from './Pokedex/Pokedex';
+import Pokedex from './Pokedex/Pokedex';
 import Pokemon from './Pokemon';
 import PokeProfile from './PokeProfile';
 import PokeQuiz from './PokdeQuiz/PokeQuiz';
@@ -45,8 +45,8 @@ function App() {
           <Container style={cont} >
               <Routes>
                 <Route exact path="/" element={ <Home /> } />
-                {/* <Route path="/pokedex" element={ <Pokedex />} /> */}
-                {/* <Route path="/pokedex/:pokemonId" element={ <Pokemon /> }/> */}
+                <Route path="/pokedex" element={ <Pokedex />} />
+                <Route path="/pokedex/:pokemonId" element={ <Pokemon /> }/>
                 <Route path="/pokeprofile" element={ <PokeProfile />} />
                 <Route path="/pokequiz" element={ <PokeQuiz />} />
                 <Route path="/pokeshop" element={ <PokeShop />} />

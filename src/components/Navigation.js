@@ -72,7 +72,7 @@ const Navigation = () => {
             <Navbar.Collapse id="basic-navbar-nav">
 
             <Nav className="justify-content-start flex-grow-1 pe-3">
-                {/* <Nav.Link href="/#/pokedex">Pokedex</Nav.Link> */}
+                <Nav.Link href="/#/pokedex">Pokedex</Nav.Link>
                 <Nav.Link href="/#/pokequiz">PokeQuiz</Nav.Link>
                 <Nav.Link href="/#/leaderboard">Leaderboard</Nav.Link>
             </Nav>
