@@ -1,4 +1,6 @@
+
 {
+  "homepage": ".",
   "name": "project3-pokequiz",
   "version": "0.1.0",
   "private": true,
