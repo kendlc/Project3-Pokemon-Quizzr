@@ -164,7 +164,7 @@ const MyVerticallyCenteredModal = (props) => {
 
     useEffect( () => {
         pokeEntry();
-    },[])
+    })
 
     const pokeEntry = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || ''}`)
