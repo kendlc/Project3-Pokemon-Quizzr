@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
 import { useNavigate } from "react-router-dom";
-import { getFirestore, doc, onSnapshot } from "firebase/firestore"; 
+import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 
@@ -33,64 +33,56 @@ const QuizGenI = () => {
     const uid = localStorage.getItem('token');
 
     useEffect( () => {
+        const getPokeGuess = () => {
+            for (let i = 0; i < 5; i++){
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (151 - 1 + 1)) + 1)}`)
+                .then( async ({data}) => {
+                    const questionText = data.name
+                    const id = data.id
+                    const image = data.sprites.other["official-artwork"]["front_default"]
+                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
+                    .then( async ({data}) => {
+                        const answerOptions = data.results
+                        .map(value => ({ value, sort: Math.random() }))
+                        .sort((a, b) => a.sort - b.sort)
+                        .map(({ value }) => value)
+                        .slice(0, 3).map( (p) => ({answerText: p.name, isCorrect: false}))
+                        answerOptions.push({ answerText: questionText, isCorrect: true })
+    
+                        const shuffledOptions = answerOptions.map(value => ({ value, sort: Math.random() }))
+                        .sort((a, b) => a.sort - b.sort)
+                        .map(({ value }) => value)
+                        
+                        await setPokeQuest((prev) => ([ ...prev, {questionText, id, image, shuffledOptions} ]))
+                    })
+                })
+            }
+        };
+        const getDataDb = () => {
+            onSnapshot(doc(db, "users", uid), (doc) => {
+            setFetchedScoreDb(doc.data().score);
+            setFetchedPokeballDb(doc.data().pokeball);
+            setUsername(doc.data().name);
+            });
+        }
         getPokeGuess();
         getDataDb();
-    });
+    },[]);
 
     useEffect( () => {
-        setScore(points * 5 *  Math.floor(Math.random() * 5));
-        setPokeballs(points * Math.floor(Math.random() * 5));
-        // setDoc(doc(db, "users", uid), {
-        //     score:  increment(score),
-        //     pokeball: increment(pokeballs)
-        // }, { merge: true });
-    },[points, showScore])
+        setScore(points * 5 *  Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+        setPokeballs(points * Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+    },[points])
 
-    // useEffect( () => {
-        
-    // },[showScore])
-
-    const getPokeGuess = () => {
-        for (let i = 0; i < 5; i++){
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 151)}`)
-            .then( async ({data}) => {
-                const questionText = data.name
-                const id = data.id
-                const image = data.sprites.other["official-artwork"]["front_default"]
-                 await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
-                .then( async ({data}) => {
-                    const answerOptions = data.results
-                    .map(value => ({ value, sort: Math.random() }))
-                    .sort((a, b) => a.sort - b.sort)
-                    .map(({ value }) => value)
-                    .slice(0, 3).map( (p) => ({answerText: p.name, isCorrect: false}))
-                    answerOptions.push({ answerText: questionText, isCorrect: true })
-
-                    const shuffledOptions = answerOptions.map(value => ({ value, sort: Math.random() }))
-                    .sort((a, b) => a.sort - b.sort)
-                    .map(({ value }) => value)
-                    
-                    await setPokeQuest((prev) => ([ ...prev, {questionText, id, image, shuffledOptions} ]))
-                })
-            })
-        }
-    }
-    
-
-    const getDataDb = () => {
-        onSnapshot(doc(db, "users", uid), (doc) => {
-        setFetchedScoreDb(doc.data().score);
-        setFetchedPokeballDb(doc.data().pokeball);
-        setUsername(doc.data().name);
-        });
-    }
-
-    // const handleDataDb = () => {
-    //     setDoc(doc(db, "users", uid), {
-    //         score:  increment(score),
-    //         pokeball: increment(pokeballs)
-    //     }, { merge: true });
-    // }
+    useEffect( () => {
+        const handleDataDb = () => {
+            setDoc(doc(db, "users", uid), {
+                score:  increment(score),
+                pokeball: increment(pokeballs)
+            }, { merge: true });
+        };
+        handleDataDb();
+    },[showScore])
 
 	const handleAnswerOptionClick = (isCorrect) => {
         setButtonDisable(true);

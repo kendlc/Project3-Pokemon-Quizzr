@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Sigmar+One);
-/* @import url('http://fonts.cdnfonts.com/css/pokemon-solid'); */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Orbitron:wght@600;900&display=swap');
 
@@ -33,7 +32,6 @@ img:hover {
   font-size: 70px;
   color: #FFCB05;
   text-shadow: 0 0 8px #3466AF;
-  /* text-shadow: -4px 0 #3466AF, 0 4px #3466AF, 4px 0 #3466AF, 0 -4px #3466AF; */
 }
 
 .pokeText1 {
@@ -41,29 +39,5 @@ img:hover {
   font-size: 50px;
   color: #7ABCC5;
   text-shadow: 0 0 1px #7ABCC5;
-  /* text-shadow: -3px 0 #3466AF, 0 3px #3466AF, 3px 0 #3466AF, 0 -3px #3466AF; */
 }
 
-/* .question-text {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-} */
-
-/* .question-text {
-  width:200px;
-  height: 200px;
-  background: red;
-  -webkit-animation: fadeinout 4s linear forwards;
-  animation: fadeinout 4s linear forwards;
-}
-
-@-webkit-keyframes fadeinout {
-0%,100% { opacity: 0; }
-50% { opacity: 1; }
-}
-
-@keyframes fadeinout {
-0%,100% { opacity: 0; }
-50% { opacity: 1; }
-} */
