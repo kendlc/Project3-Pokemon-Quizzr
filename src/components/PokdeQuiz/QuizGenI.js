@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
 import { useNavigate } from "react-router-dom";
-import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
+import { getFirestore, doc, onSnapshot } from "firebase/firestore"; 
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 
