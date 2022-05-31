@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
 import { useNavigate } from "react-router-dom";
-import { getFirestore, doc, setDoc, getDoc, onSnapshot,increment } from "firebase/firestore"; 
+import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 
@@ -35,7 +35,7 @@ const QuizGenI = () => {
     useEffect( () => {
         getPokeGuess();
         getDataDb();
-    },[]);
+    });
 
     useEffect( () => {
         setScore(points * 5 *  Math.floor(Math.random() * 5));
@@ -43,7 +43,7 @@ const QuizGenI = () => {
     },[points])
 
     useEffect( () => {
-        handleDataDb();
+        handleDataDb()
     },[showScore])
 
     const getPokeGuess = () => {
@@ -172,7 +172,7 @@ const QuizGenI = () => {
                             </Table>
                         </Col>
                         <Col sm={5} className='d-flex justify-content-center justify-content-sm-start'>
-                            <img src='./images/prof.webp'
+                            <img src='./images/prof.webp' alt="Prof Tally"
                             style={{width: '12rem'}}
                             className='img-fluid'/>
                         </Col>
@@ -181,7 +181,7 @@ const QuizGenI = () => {
                         <Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
                             <span className="mx-4">{username.split(' ')[0]}</span>
                             <span className="mx-4">Score:  {fetchedScoreDb}</span>
-                            <span className="mx-4">Pokeballs:  <img src="./images/greatball.png"/>  {fetchedPokeballDb}</span>
+                            <span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
                         </Col>
                     </Row>
                     <Row>
@@ -210,7 +210,7 @@ const QuizGenI = () => {
                     
 					<Container className=''>
                         <div className='d-block d-sm-none d-flex justify-content-center '>
-                            <img src='./images/pokequiz1.png' 
+                            <img src='./images/pokequiz1.png' alt="pokequiz"
                             style={{width: '16rem'}}
                             />
                         </div>
@@ -220,7 +220,7 @@ const QuizGenI = () => {
                             <Col className='d-flex justify-content-center'>PTS {points}
                             </Col>
                             <Col className='d-flex justify-content-center'>
-                                <img src="/images/clock.svg" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
+                                <img src="/images/clock.svg" alt="pokequiz" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
                             </Col>
 						</Row>
 						<div>
@@ -232,7 +232,7 @@ const QuizGenI = () => {
                                     : ''
                                 } 
                                 className={ unmask ? 'unmask img-fluid' : 'mask img-fluid' }
-                                />
+                                alt="pokequiz"/>
                             </div>
                             <Row className='d-sm-none d-flex justify-content-around pokeText1' style={{fontSize: '6vw'}}>
 							<Col className='d-flex justify-content-center'>Q {questionNumber <= 5 ? questionNumber + 1 : '5'}/5
@@ -240,7 +240,7 @@ const QuizGenI = () => {
                             <Col className='d-flex justify-content-center'>PTS {points}
                             </Col>
                             <Col className='d-flex justify-content-center'>
-                                <img src="/images/clock.svg" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
+                                <img src="/images/clock.svg" alt="pokequiz" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
                             </Col>
 						</Row>
                             <div className="pokeText d-flex justify-content-center">
@@ -261,7 +261,7 @@ const QuizGenI = () => {
                     { pokeQuest[currentQuestion] && 
                         <Container className="float-center">
                             <div className='d-none d-sm-block'>
-                                <img src='./images/pokequiz1.png' 
+                                <img src='./images/pokequiz1.png' alt="pokequiz"
                                 style={{width: '16rem'}}
                                 />
                             </div>

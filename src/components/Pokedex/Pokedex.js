@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Navbar, Nav, Form, FormControl, Button, Modal, Row, Col } from "react-bootstrap";
-import Display from "../Display";
 import GenI from "./GenI";
 import GenII from "./GenII";
 import GenIII from "./GenIII";

@@ -100,7 +100,7 @@ const MyVerticallyCenteredModal = (props) => {
                         <div style={{ height: '10rem', objectFit: 'contain'}}>
                             <img src={ props.pdata ? props.pdata.sprites.front_default : ''}
                             className="align-self-center img-fluid" 
-                            style={{ width: '10rem', padding: '.3rem'}}
+                            style={{ width: '10rem', padding: '.3rem'}} alt="Poke Sprite"
                             />
                         </div>
                     </Col>

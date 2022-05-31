@@ -23,13 +23,13 @@ const Navigation = () => {
 
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        // const token = credential.accessToken;
         
         // The signed-in user info.
         const user = result.user;
         localStorage.setItem('token', user.uid);
         try {
-            const docRef = await setDoc(doc(db, "users", user.uid), {
+            await setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
                 email: user.email,
                 photo: user.photoURL,
@@ -41,15 +41,16 @@ const Navigation = () => {
             console.error("Error adding document: ", e);
           };
           navigate('/')
-        }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        });        
+        })
+        // .catch((error) => {
+        // // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // // The email of the user's account used.
+        // const email = error.customData.email;
+        // // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // });        
         
     };
 
@@ -58,19 +59,21 @@ const Navigation = () => {
             localStorage.removeItem('token');
             navigate('/')
             // Sign-out successful.
-            }).catch((error) => {
-            // An error happened.
-            });
+            })
+            // .catch((error) => {
+            // // An error happened.
+            // });
     };
 
 
     return (
         <Navbar sticky="top" bg="light" expand="lg">
         <Container>
-            <Navbar.Brand href="/"><img src="/images/pokemonlogo.png" className="img-fluid" width={150} /><img src="/images/quizzr.png" className="img-fluid" width={100} /></Navbar.Brand>
+            <Navbar.Brand href="/">
+                <img src="/images/pokemonlogo.png" className="img-fluid" width={150} alt="PokeQuiz Logo"/>
+                <img src="/images/quizzr.png" className="img-fluid" width={100} alt="PokeQuiz Logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-
             <Nav className="justify-content-start flex-grow-1 pe-3">
                 <Nav.Link href="/#/pokedex">Pokedex</Nav.Link>
                 <Nav.Link href="/#/pokequiz">PokeQuiz</Nav.Link>

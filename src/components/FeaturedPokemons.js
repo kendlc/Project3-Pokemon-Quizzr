@@ -63,7 +63,7 @@ const FeaturedPokemons = () => {
                                                 <Container 
                                                 className="d-flex justify-content-center justify-content-sm-start"
                                                 style={{minWidth: '20rem'}}>
-                                                    <img 
+                                                    <img alt='featured pokemon'
                                                     className="img-fluid"
                                                     style={{height: '15rem'}}
                                                     src={poke.sprites.other["official-artwork"]["front_default"]} />

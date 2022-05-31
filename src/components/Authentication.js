@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { collection, doc, addDoc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 import { firebaseConfig } from "./Firebase-config";
 import { useNavigate } from "react-router-dom";
 import { isAuth } from "./Firebase-config";
-import { Container, Button } from "bootstrap";
 
 const Authentication = () => {
     const app = initializeApp(firebaseConfig);
@@ -20,15 +19,15 @@ const Authentication = () => {
         .then( async (result) => {
 
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
        
         
         // The signed-in user info.
         const user = result.user;
         localStorage.setItem('token', user.uid);
         try {
-            const docRef = await setDoc(doc(db, "users", user.uid), {
+            await setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
                 email: user.email,
                 photo: user.photoURL,
@@ -40,15 +39,16 @@ const Authentication = () => {
             console.error("Error adding document: ", e);
           };
         navigate('/pokequiz');
-        }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        });        
+        })
+        // .catch((error) => {
+        // // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // // The email of the user's account used.
+        // const email = error.customData.email;
+        // // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // });        
         
     };
 

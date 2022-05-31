@@ -10,7 +10,7 @@ const Home = () => {
         <Container > 
             <Row className=" mx-auto">
                 <Col sm className="mt-4 d-flex justify-content-lg-end justify-content-center">
-                    <img src="./images/pikachu.webp" width={300} className="img-fluid mr-5"/>
+                    <img src="./images/pikachu.webp" width={300} className="img-fluid mr-5" alt="Prof Pikachu"/>
                 </Col>
                 <Col className="mt-5">
                         <p className="text-sm-left">

@@ -1,7 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { collection, doc, addDoc, setDoc } from "firebase/firestore"; 
+// import { initializeApp } from "firebase/app";
+// import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
+// import { collection, doc, addDoc, setDoc } from "firebase/firestore"; 
 
 
 
