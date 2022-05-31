@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
-
-
+import { useNavigate } from "react-router-dom";
+import { getFirestore, doc, setDoc, getDoc, onSnapshot,increment } from "firebase/firestore"; 
+import { firebaseConfig } from "../Firebase-config";
+import { initializeApp } from "firebase/app";
 
 
 const QuizGenI = () => {
@@ -17,19 +19,32 @@ const QuizGenI = () => {
     const [score, setScore] = useState(0);
     const [pokeballs, setPokeballs] = useState(0);
     const [buttonDisable, setButtonDisable] = useState('');
+    const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
+    const [fetchedScoreDb, setFetchedScoreDb] = useState('');
+    const [username, setUsername] = useState('');
 
     const expiryTimestamp = new Date();
-    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 5);
-    const { seconds, restart,} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
+    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
+    const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
 
-    
-
-    // setScore(points *  (10 + Math.floor(Math.random() * 9)))
-    // setPokeballs(points * 10)
+    const navigate = useNavigate();
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const uid = localStorage.getItem('token');
 
     useEffect( () => {
         getPokeGuess();
+        getDataDb();
     },[]);
+
+    useEffect( () => {
+        setScore(points * 5 *  Math.floor(Math.random() * 5));
+        setPokeballs(points * Math.floor(Math.random() * 5));
+    },[points])
+
+    useEffect( () => {
+        handleDataDb();
+    },[showScore])
 
     const getPokeGuess = () => {
         for (let i = 0; i < 5; i++){
@@ -56,16 +71,30 @@ const QuizGenI = () => {
             })
         }
     }
+    
+
+    const getDataDb = () => {
+        onSnapshot(doc(db, "users", uid), (doc) => {
+        setFetchedScoreDb(doc.data().score);
+        setFetchedPokeballDb(doc.data().pokeball);
+        setUsername(doc.data().name);
+        });
+    }
+
+    const handleDataDb = () => {
+        setDoc(doc(db, "users", uid), {
+            score:  increment(score),
+            pokeball: increment(pokeballs)
+        }, { merge: true });
+    }
 
 	const handleAnswerOptionClick = (isCorrect) => {
         setButtonDisable(true);
-        if (isCorrect) {
-            setPoints(points + 1);
-        }
 
-            const nextQuestion = currentQuestion + 1;
+        const nextQuestion = currentQuestion + 1;
                 
         if (nextQuestion < pokeQuest.length +  1) {
+            pause();
             setShowAnswer(true);
             setUnmask(true);
 
@@ -77,21 +106,24 @@ const QuizGenI = () => {
                 setCurrentQuestion(nextQuestion);
                 setShowAnswer(false);
                 setButtonDisable('');
-                
+                if (isCorrect) {
+                    setPoints(points + 1 );
+                };
 
                 if (questionNumber <= 3) {
                     setQuestionNumber(questionNumber + 1);
                 }
                 setTimeout( () => {
                     const time = new Date();
-                    time.setSeconds(time.getSeconds() + 5);
-                    restart(time)
+                    time.setSeconds(time.getSeconds() + 10);
+                    restart(time);
+                    
                     if (nextQuestion === pokeQuest.length) {
                         setShowScore(true);
-
                     }
+
                 }, 200);
-            },2000)
+            },2000);
         }
 	};
 
@@ -119,22 +151,22 @@ const QuizGenI = () => {
                                 <tr>
                                     <td>Correct Answers</td>
                                     <td>...</td>
-                                    <td>{points}</td>
+                                    <td><strong>{points}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Score</td>
                                     <td>...</td>
-                                    <td>{score}</td>
+                                    <td><strong>{score}</strong></td>
                                 </tr>
                                 <tr>
-                                    <th>Rewards</th>
+                                    <th>Reward</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <td>Pokeballs</td>
                                     <td>...</td>
-                                    <td>{pokeballs}</td>
+                                    <td><strong>{pokeballs}</strong></td>
                                 </tr>
                                 </tbody>
                             </Table>
@@ -143,6 +175,32 @@ const QuizGenI = () => {
                             <img src='./images/prof.webp'
                             style={{width: '12rem'}}
                             className='img-fluid'/>
+                        </Col>
+                    </Row>
+                    <Row >
+                        <Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
+                            <span className="mx-4">{username.split(' ')[0]}</span>
+                            <span className="mx-4">Score:  {fetchedScoreDb}</span>
+                            <span className="mx-4">Pokeballs:  <img src="./images/greatball.png"/>  {fetchedPokeballDb}</span>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className='d-flex justify-content-center mt-5'>
+                            <Button variant='secondary btn-lg m-1'
+                            style={{borderRadius: '4rem'}}
+                            onClick={ () => window.location.reload()}>
+                                Quiz again
+                            </Button> 
+                            <Button variant='secondary btn-lg m-1'
+                            style={{borderRadius: '4rem'}}
+                            onClick={ () => navigate('/leaderboard')}>
+                                Leaderboard
+                            </Button> 
+                            <Button variant='secondary btn-lg m-1'
+                            style={{borderRadius: '4rem'}}
+                            onClick={ () => navigate('/pokeshop')}>
+                                PokeShop
+                            </Button> 
                         </Col>
                     </Row>
 				</Container>
@@ -156,13 +214,13 @@ const QuizGenI = () => {
                             style={{width: '16rem'}}
                             />
                         </div>
-						<Row className='d-flex justify-content-around pokeText1' style={{fontSize: '4vw'}}>
-							<Col>Q &nbsp;{questionNumber <= 5 ? questionNumber + 1 : '5'}&nbsp; /&nbsp;5
+						<Row className='d-none d-sm-flex justify-content-around pokeText1' style={{fontSize: '3vw'}}>
+							<Col className='d-flex justify-content-center'>Q {questionNumber <= 5 ? questionNumber + 1 : '5'}/5
+                            </Col >
+                            <Col className='d-flex justify-content-center'>PTS {points}
                             </Col>
-                            <Col>PTS {points}
-                            </Col>
-                            <Col >
-                                <img src="/images/clock.svg" width="35" style={{marginTop: '-8px', minWidth: '4vw'}}/> {seconds} s
+                            <Col className='d-flex justify-content-center'>
+                                <img src="/images/clock.svg" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
                             </Col>
 						</Row>
 						<div>
@@ -176,6 +234,15 @@ const QuizGenI = () => {
                                 className={ unmask ? 'unmask img-fluid' : 'mask img-fluid' }
                                 />
                             </div>
+                            <Row className='d-sm-none d-flex justify-content-around pokeText1' style={{fontSize: '6vw'}}>
+							<Col className='d-flex justify-content-center'>Q {questionNumber <= 5 ? questionNumber + 1 : '5'}/5
+                            </Col >
+                            <Col className='d-flex justify-content-center'>PTS {points}
+                            </Col>
+                            <Col className='d-flex justify-content-center'>
+                                <img src="/images/clock.svg" width="35" style={{marginTop: '1px', minWidth: '3vw'}}/>  &nbsp;{seconds}
+                            </Col>
+						</Row>
                             <div className="pokeText d-flex justify-content-center">
                                 { showAnswer ?
                                     <p className="text-capitalize">
@@ -187,13 +254,11 @@ const QuizGenI = () => {
                                     </p>
                                 : '' }
                             </div>
-                                         
                         </div>
 					</Container>
                 </Col>
                 <Col sm={5}>
                     { pokeQuest[currentQuestion] && 
-                        
                         <Container className="float-center">
                             <div className='d-none d-sm-block'>
                                 <img src='./images/pokequiz1.png' 
@@ -204,13 +269,13 @@ const QuizGenI = () => {
                             {
                             pokeQuest[currentQuestion].shuffledOptions.map((answerOption) => (
                                     <Row key={Math.random()} >
-                                    <Button variant="danger p-2 m-2 shadow" disabled={buttonDisable}
-                                    style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
-                                    onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-                                    className="text-capitalize"
-                                    >
-                                    {answerOption.answerText}
-                                    </Button>
+                                        <Button variant="danger p-2 m-2 shadow" disabled={buttonDisable}
+                                        style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
+                                        onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
+                                        className="text-capitalize"
+                                        >
+                                        {answerOption.answerText}
+                                        </Button>
                                     </Row>
                             ))}
                             </div>
@@ -225,62 +290,3 @@ const QuizGenI = () => {
 }
 
 export default QuizGenI;
-
-// shuffle
-// .map(value => ({ value, sort: Math.random() }))
-// .sort((a, b) => a.sort - b.sort)
-// .map(({ value }) => value)
-
-
-// const questions = [
-//     {
-//         questionText: 'What is the capital of France?',
-//         answerOptions: [
-//             { answerText: 'New York', isCorrect: false },
-//             { answerText: 'London', isCorrect: false },
-//             { answerText: 'Paris', isCorrect: true },
-//             { answerText: 'Dublin', isCorrect: false },
-//         ],
-//     },
-//     {
-//         questionText: 'Who is CEO of Tesla?',
-//         answerOptions: [
-//             { answerText: 'Jeff Bezos', isCorrect: false },
-//             { answerText: 'Elon Musk', isCorrect: true },
-//             { answerText: 'Bill Gates', isCorrect: false },
-//             { answerText: 'Tony Stark', isCorrect: false },
-//         ],
-//     },
-//     {
-//         questionText: 'The iPhone was created by which company?',
-//         answerOptions: [
-//             { answerText: 'Apple', isCorrect: true },
-//             { answerText: 'Intel', isCorrect: false },
-//             { answerText: 'Amazon', isCorrect: false },
-//             { answerText: 'Microsoft', isCorrect: false },
-//         ],
-//     },
-//     {
-//         questionText: 'How many Harry Potter books are there?',
-//         answerOptions: [
-//             { answerText: '1', isCorrect: false },
-//             { answerText: '4', isCorrect: false },
-//             { answerText: '6', isCorrect: false },
-//             { answerText: '7', isCorrect: true },
-//         ],
-//     },
-// ];
-
-                    //    {/* <div style={{minHeight: '120px'}}>
-                    //             <div className="collapse collapse-horizontal" id="collapseWidthExample">
-                    //                 <div className="card card-body" style={{width: '300px'}}>
-                    //                     <h2>
-                    //                     {
-                    //                         pokeQuest[currentQuestion] ?
-                    //                         pokeQuest[currentQuestion].questionText
-                    //                     : ''
-                    //                     }
-                    //                     </h2>
-                    //                 </div>
-                    //             </div>
-                    //         </div> */}

@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { isAuth } from "./Firebase-config";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -7,7 +6,7 @@ import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 import { firebaseConfig } from "./Firebase-config";
 import { useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
+import { Navbar, Nav, Container} from 'react-bootstrap';
 
 
 const Navigation = () => {
@@ -25,11 +24,10 @@ const Navigation = () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        localStorage.setItem('token', token);
         
         // The signed-in user info.
         const user = result.user;
-
+        localStorage.setItem('token', user.uid);
         try {
             const docRef = await setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
