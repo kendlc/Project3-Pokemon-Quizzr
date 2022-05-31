@@ -32,9 +32,7 @@ const Navigation = () => {
             await setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
                 email: user.email,
-                photo: user.photoURL,
-                score: 0,
-                pokeball: 0
+                photo: user.photoURL
             }, { merge: true });
             console.log("Document written with ID: ", user.uid);
           } catch (e) {
@@ -86,12 +84,12 @@ const Navigation = () => {
             </Nav>
             <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/">Home</Nav.Link>                
-                { isAuth() &&
+                {/* { isAuth() &&
                     <>
                     <Nav.Link href="/pokeprofile">PokeStorage</Nav.Link>
                     <Nav.Link href="/pokeshop">PokeShop</Nav.Link>
                     </>
-                }
+                } */}
                 { !isAuth() &&
                     <>
                         <Nav.Link onClick={_handleSignIn}>Sign In</Nav.Link>
@@ -107,43 +105,6 @@ const Navigation = () => {
             </Navbar.Collapse>
         </Container>
         </Navbar>
-
-
-
-
-        // <Navbar>
-        //     <Container>
-        //         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        //         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        //         <Navbar.Collapse id="basic-navbar-nav">
-        //             <Nav className="me-auto">
-        //             <Nav.Link href="#home">Home</Nav.Link>
-        //             <Nav.Link href="#link">Link</Nav.Link>
-        //                 {/* <NavLink to="/">Home</NavLink>
-        //                 <NavLink to="/pokedex">Pokedex</NavLink>
-        //                 <NavLink to="/pokequiz" activeclassname="link">PokeQuiz</NavLink>
-        //                 { isAuth() &&
-        //                     <>
-        //                     <NavLink to="/pokeprofile">PokeProfile</NavLink>
-        //                     <NavLink to="/pokeshop">PokeShop</NavLink>    
-        //                     </>
-        //                 }
-        //                 <NavLink to="/leaderboard">Leaderboard</NavLink>
-        //                 { !isAuth() && 
-        //                     <>
-        //                     <button onClick={_handleSignIn}>Sign In</button>
-        //                     </>
-        //                 }
-        //                 { isAuth() && 
-        //                     <>
-        //                     <button onClick={_handleSignOut}>Sign Out</button>
-        //                     </>
-        //                 } */}
-        //             </Nav>
-        //         </Navbar.Collapse>
-        //     </Container>
-        // </Navbar>
-        
     );
 };
 

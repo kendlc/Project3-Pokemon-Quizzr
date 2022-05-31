@@ -30,15 +30,14 @@ const Authentication = () => {
             await setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
                 email: user.email,
-                photo: user.photoURL,
-                score: 0,
-                pokeball: 0
+                photo: user.photoURL
             }, { merge: true });
             console.log("Document written with ID: ", user.uid);
           } catch (e) {
             console.error("Error adding document: ", e);
           };
         navigate('/pokequiz');
+        window.location.reload();
         })
         .catch((error) => {
         // Handle Errors here.
@@ -80,13 +79,13 @@ const Authentication = () => {
             { !isAuth() &&
                 <>
                     <h1> Sign In to Quiz! </h1>
-                    <button  className="btn btn-secondary" onClick={_handleSignIn}> Sign In </button>
+                    <button  className="btn btn-secondary btn-lg" onClick={_handleSignIn}> Sign In </button>
                 </>
             }
             { isAuth() &&
                 <>
                     <h2> Start Quizzing! </h2>
-                    <button className="btn btn-secondary" onClick={_handlePlay}> Play PokeQuiz </button>
+                    <button className="btn btn-secondary btn-lg" onClick={_handlePlay}> Play PokeQuiz </button>
                 </>
             }
         </div>

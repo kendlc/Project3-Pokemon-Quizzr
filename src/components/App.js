@@ -2,7 +2,6 @@ import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Pokedex from './Pokedex/Pokedex';
-import Pokemon from './Pokemon';
 import PokeProfile from './PokeProfile';
 import PokeQuiz from './PokdeQuiz/PokeQuiz';
 import PokeShop from './PokeShop';
@@ -15,17 +14,6 @@ import Footer from './Footer';
 
 
 function App() {
-  // const [heigh, setHeig] = useState(100)
-
-  // useEffect( () =>{
-  //   getHeigh();
-  // },[])
-
-  // const getHeigh = () => {
-  //   setHeig(window.innerHeight);
-  // }
-
-  // window.addEventListener('resize', getHeigh)
 
   const bg = {
     height: `100%`,
@@ -46,7 +34,6 @@ function App() {
               <Routes>
                 <Route exact path="/" element={ <Home /> } />
                 <Route path="/pokedex" element={ <Pokedex />} />
-                <Route path="/pokedex/:pokemonId" element={ <Pokemon /> }/>
                 <Route path="/pokeprofile" element={ <PokeProfile />} />
                 <Route path="/pokequiz" element={ <PokeQuiz />} />
                 <Route path="/pokeshop" element={ <PokeShop />} />

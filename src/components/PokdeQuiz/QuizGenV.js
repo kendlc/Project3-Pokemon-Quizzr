@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
-
+import useSound from "use-sound";
+import buttonsFx from './sounds/pokequizsound3.mp3';
 
 const QuizGenV = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -22,6 +23,9 @@ const QuizGenV = () => {
     const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
     const [username, setUsername] = useState('');
+    const [play] = useSound(buttonsFx, {
+		volume: 0.4,
+	});
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
@@ -203,11 +207,11 @@ const QuizGenV = () => {
                             onClick={ () => navigate('/leaderboard')}>
                                 Leaderboard
                             </Button> 
-                            <Button variant='secondary btn-lg m-1'
+                            {/* <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
                             onClick={ () => navigate('/pokeshop')}>
                                 PokeShop
-                            </Button> 
+                            </Button>  */}
                         </Col>
                     </Row>
 				</Container>
@@ -280,6 +284,7 @@ const QuizGenV = () => {
                                         style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
                                         onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
                                         className="text-capitalize"
+                                        onMouseDown={() => play()}
                                         >
                                         {answerOption.answerText}
                                         </Button>

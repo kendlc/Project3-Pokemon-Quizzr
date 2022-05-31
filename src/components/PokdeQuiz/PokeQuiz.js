@@ -13,6 +13,11 @@ import QuizGenV from "./QuizGenV";
 import QuizGenVI from "./QuizGenVI";
 import QuizGenVII from "./QuizGenVII";
 import QuizGenVIII from "./QuizGenVIII";
+import FeaturedPokemons from "../FeaturedPokemons";
+import useSound from "use-sound";
+import soundFx from './sounds/pokequizsound1.mp3';
+import music from './sounds/pokequizsound2.mp3';
+
 
 const PokeQuiz = () => {
 	const [genSelect, setGenSelect] = useState(1);
@@ -21,8 +26,15 @@ const PokeQuiz = () => {
     const [username, setUsername] = useState('');
 	const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
+	const [play] = useSound(soundFx, {
+		volume: 0.4,
+	});
+	const [play1] = useSound(music, {
+		volume: 0.03,
+	  });
 
 	useEffect( () => {
+		if (isAuth()){
 		const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const uid = localStorage.getItem('token');
@@ -34,6 +46,7 @@ const PokeQuiz = () => {
 			});
 		}
 		getDataDb();
+		}
 	})
 
 	const _handleSelect = (e) => {
@@ -43,23 +56,32 @@ const PokeQuiz = () => {
 	const _handleQuiz = () => {
 		setGenQuiz(genSelect);
 		setShowQuiz(true);
+		play();
+		setTimeout( () => {
+			play1();
+		}, 3000)
 	}
 
 	return (
 		<Container>
 			{!showQuiz &&
 				<>
-				<Row>
-					<Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
-						<span className="mx-4">{username.split(' ')[0]}'s</span>
-						<span className="mx-4">Score:  {fetchedScoreDb}</span>
-						<span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
-					</Col>
-				</Row>
+				{isAuth() &&
+					<Row>
+						<Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
+							<span className="mx-4">{username.split(' ')[0]}'s</span>
+							<span className="mx-4">Score:  {fetchedScoreDb}</span>
+							<span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+						</Col>
+					</Row>
+				}
 				<Row className="d-flex justify-content-center text-center">
 					<Col sm={4} style={{marginTop: '4rem'}}>
+						
 					{ !isAuth() &&
-						<Authentication />
+						<div className="d-flex justify-content-end">
+							<Authentication />
+						</div>
 					}
 					{ isAuth() &&
 						<>
@@ -80,10 +102,12 @@ const PokeQuiz = () => {
 							</Form.Select>
 							</Row>
 							<Row>
-							<Button variant="secondary mx-auto mt-5 btn-lg" onClick={_handleQuiz} >
+							<Button variant="secondary mx-auto mt-5 btn-lg" onClick={_handleQuiz}
+							>
 								Start PokeQuiz!
 							</Button>
 							</Row>
+
 						</>
 					}
 				</Col>
@@ -94,6 +118,14 @@ const PokeQuiz = () => {
 						className="img-fluid mt-4"/>
 				</Col>
 				</Row>
+				{ !isAuth() &&
+					<Row className="d-flex justify-content-center mt-5">
+						<Col sm={6}>
+						<FeaturedPokemons />
+						</Col>
+					</Row>
+				}
+
 				</>
 			}
 			
@@ -122,12 +154,6 @@ const PokeQuiz = () => {
 				<QuizGenVIII />
 			}
 			
-			
-
-
-
-
-			{/* <QuizGenI /> */}
 		</Container>
 	);
 };

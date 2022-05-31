@@ -3,12 +3,10 @@ import { Col, Row } from "react-bootstrap";
 import { getFirestore, collection, query, orderBy, limit, getDocs} from "firebase/firestore"; 
 import { firebaseConfig } from "./Firebase-config";
 import { initializeApp } from "firebase/app";
-
+import FeaturedPokemons from "./FeaturedPokemons";
 
 const Leaderboard = () => {
     const [scoreBoard, setScoreBoard] = useState([]);
-
-
 
     useEffect( () => {
         const getScores = async () => {
@@ -26,7 +24,7 @@ const Leaderboard = () => {
     return (
         <div className="d-block justify-content-center" >
             <Row className="d-flex justify-content-center">
-                <Col sm={4} style={{fontSize: '3vh'}}>
+                <Col sm={4} style={{fontSize: '20px'}}>
                     <table className="table table-hover mt-5">
                         <thead>
                             <tr>
@@ -51,7 +49,12 @@ const Leaderboard = () => {
                 <Col sm={4}>
                     <img src="./images/smeargle.png" alt="Smeargle"
                     style={{maxWidth: '300px'}}
-                    className="img-fluid mt-5"/>
+                    className="img-fluid mt-5 mx-4"/>
+                </Col>
+            </Row>
+            <Row className="d-flex justify-content-center mt-5">
+                <Col sm={6}>
+                <FeaturedPokemons />
                 </Col>
             </Row>
 

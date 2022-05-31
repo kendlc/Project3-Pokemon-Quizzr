@@ -14,7 +14,7 @@ const LeaderboardHome = () => {
         const getScores = async () => {
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
-            const q = query(collection(db, "users"), orderBy("score", "desc"), limit(3));
+            const q = query(collection(db, "users"), orderBy("score", "desc"), limit(5));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(  (doc) => {
                  setScoreBoard((prev) => ([...prev, doc.data()]))
@@ -26,7 +26,7 @@ const LeaderboardHome = () => {
     return (
         <div className="d-block justify-content-center" >
             <Row className="d-flex justify-content-center">
-                <Col sm={4} style={{fontSize: '3vh'}}>
+                <Col sm={7} style={{fontSize: '20px'}}>
                     <table className="table table-hover mt-5">
                         <thead>
                             <tr>
