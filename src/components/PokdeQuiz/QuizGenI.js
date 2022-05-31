@@ -71,7 +71,7 @@ const QuizGenI = () => {
 
     useEffect( () => {
         setScore(points * 5 *  Math.floor(Math.random() * (5 - 1 + 1)) + 1);
-        setPokeballs(points * Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+        setPokeballs(points * Math.floor(Math.random() * (3 - 1 + 1)) + 1);
     },[points])
 
     useEffect( () => {
