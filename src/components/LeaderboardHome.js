@@ -5,7 +5,7 @@ import { firebaseConfig } from "./Firebase-config";
 import { initializeApp } from "firebase/app";
 
 
-const Leaderboard = () => {
+const LeaderboardHome = () => {
     const [scoreBoard, setScoreBoard] = useState([]);
 
 
@@ -14,7 +14,7 @@ const Leaderboard = () => {
         const getScores = async () => {
             const app = initializeApp(firebaseConfig);
             const db = getFirestore(app);
-            const q = query(collection(db, "users"), orderBy("score", "desc"), limit(10));
+            const q = query(collection(db, "users"), orderBy("score", "desc"), limit(3));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(  (doc) => {
                  setScoreBoard((prev) => ([...prev, doc.data()]))
@@ -59,4 +59,4 @@ const Leaderboard = () => {
     );
 };
 
-export default Leaderboard; 
+export default LeaderboardHome; 

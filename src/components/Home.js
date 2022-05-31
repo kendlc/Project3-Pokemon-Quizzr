@@ -2,7 +2,7 @@ import React from "react";
 import { Container,Row,Col } from "react-bootstrap";
 import Authentication from "./Authentication";
 import FeaturedPokemons from "./FeaturedPokemons";
-import Leaderboard from "./Leaderboard";
+import LeaderboardHome from "./LeaderboardHome";
 
 const Home = () => {
 
@@ -31,8 +31,8 @@ const Home = () => {
                     <Col sm className="mt-3 mx-auto d-flex justify-content-center">
                         <FeaturedPokemons />
                     </Col>
-                    <Col sm className="mt-3 mx-auto d-flex justify-content-center">
-                        <Leaderboard />
+                    <Col sm className="mx-auto d-flex justify-content-center" style={{marginTop: '-3rem'}}>
+                        <LeaderboardHome />
                     </Col>
                 </Row>
             </Container>

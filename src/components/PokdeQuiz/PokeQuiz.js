@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore"; 
+import { firebaseConfig } from "../Firebase-config";
+import { initializeApp } from "firebase/app";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import Authentication from "../Authentication";
 import { isAuth } from "../Firebase-config";
@@ -15,6 +18,23 @@ const PokeQuiz = () => {
 	const [genSelect, setGenSelect] = useState(1);
 	const [genQuiz, setGenQuiz] = useState('');
 	const [showQuiz, setShowQuiz] = useState(false);
+    const [username, setUsername] = useState('');
+	const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
+    const [fetchedScoreDb, setFetchedScoreDb] = useState('');
+
+	useEffect( () => {
+		const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const uid = localStorage.getItem('token');
+		const getDataDb = () => {
+			onSnapshot(doc(db, "users", uid), (doc) => {
+			setFetchedScoreDb(doc.data().score);
+			setFetchedPokeballDb(doc.data().pokeball);
+			setUsername(doc.data().name);
+			});
+		}
+		getDataDb();
+	})
 
 	const _handleSelect = (e) => {
 		setGenSelect(e.target.value);
@@ -27,10 +47,15 @@ const PokeQuiz = () => {
 
 	return (
 		<Container>
-			<Row>
-
-			</Row>
 			{!showQuiz &&
+				<>
+				<Row>
+					<Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
+						<span className="mx-4">{username.split(' ')[0]}'s</span>
+						<span className="mx-4">Score:  {fetchedScoreDb}</span>
+						<span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+					</Col>
+				</Row>
 				<Row className="d-flex justify-content-center text-center">
 					<Col sm={4} style={{marginTop: '4rem'}}>
 					{ !isAuth() &&
@@ -69,6 +94,7 @@ const PokeQuiz = () => {
 						className="img-fluid mt-4"/>
 				</Col>
 				</Row>
+				</>
 			}
 			
 			{ genQuiz === '1' &&

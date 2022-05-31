@@ -80,8 +80,6 @@ const MyVerticallyCenteredModal = (props) => {
         pokeEntry()
     })
 
-
-    
     return (
       <Modal
             {...props}
