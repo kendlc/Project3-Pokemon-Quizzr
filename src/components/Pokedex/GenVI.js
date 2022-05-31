@@ -11,7 +11,7 @@ const GenII = () => {
         if (pokemon.length <= 151){
             getPoke()
         }
-    },[])
+    })
 
     const getPoke =  () => {
         for (let i = 650; i <= 721; i++ ){
