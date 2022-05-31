@@ -69,23 +69,29 @@ const QuizGenI = () => {
         getDataDb();
     },[]);
 
-    useEffect( () => {
-        setScore(points * 5 *  Math.floor(Math.random() * (5 - 1 + 1)) + 1);
-        setPokeballs(points * Math.floor(Math.random() * (3 - 1 + 1)) + 1);
-    },[points])
+    const [scoreF, setScoreF] = useState(0);
+    const [pokeballsF, setPokeballsF ] = useState(0);
 
-    useEffect( (score, pokeballs) => {
+    useEffect( () => {
+        if (showScore === true) {
+            setScoreF( score )
+            setPokeballsF( pokeballs );
+        };
+    },[score, pokeballs, showScore ])
+
+    useEffect( () => {
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const uid = localStorage.getItem('token');
         const handleDataDb = () => {
             setDoc(doc(db, "users", uid), {
-                score:  increment(score),
-                pokeball: increment(pokeballs)
+                score:  increment(scoreF),
+                pokeball: increment(pokeballsF)
             }, { merge: true });
         };
         handleDataDb();
-    },[showScore])
+    },[scoreF, pokeballsF])
+
 
 	const handleAnswerOptionClick = (isCorrect) => {
         setButtonDisable(true);
@@ -107,6 +113,8 @@ const QuizGenI = () => {
                 setButtonDisable('');
                 if (isCorrect) {
                     setPoints(points + 1 );
+                    setScore( score + 10 + (Math.floor(Math.random() * (10 - 1 + 1)) + 1) );
+                    setPokeballs( pokeballs + 5 );
                 };
 
                 if (questionNumber <= 3) {
@@ -141,7 +149,7 @@ const QuizGenI = () => {
                             <Table responsive='sm' className="table-hover" >
                                 <thead>
                                 <tr>
-                                    <th>Tally</th>
+                                    <th>Scoreboard</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -149,12 +157,12 @@ const QuizGenI = () => {
                                 <tbody>
                                 <tr>
                                     <td>Correct Answers</td>
-                                    <td>...</td>
+                                    <td>+</td>
                                     <td><strong>{points}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Score</td>
-                                    <td>...</td>
+                                    <td>+</td>
                                     <td><strong>{score}</strong></td>
                                 </tr>
                                 <tr>
@@ -164,7 +172,7 @@ const QuizGenI = () => {
                                 </tr>
                                 <tr>
                                     <td>Pokeballs</td>
-                                    <td>...</td>
+                                    <td>+</td>
                                     <td><strong>{pokeballs}</strong></td>
                                 </tr>
                                 </tbody>
