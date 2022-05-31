@@ -8,18 +8,17 @@ const GenII = () => {
     const [pokeData, setPokeData] = useState('');
 
     useEffect( () => {
-            getPoke()
-    },[])
-
-    const getPoke =  () => {
-        for (let i = 722; i <= 809; i++ ){
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(
-                async (result) => {
-                   await setPokemon((prev) => ([ ...prev, result.data ]))
-                }
-            )
+        const getPoke =  () => {
+            for (let i = 722; i <= 809; i++ ){
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(
+                    async (result) => {
+                       await setPokemon((prev) => ([ ...prev, result.data ]))
+                    }
+                )
+            }
         }
-    }
+        getPoke()
+    },[])
 
     return (
         <Container className="d-flex align-content-stretch flex-wrap">
@@ -68,17 +67,18 @@ const MyVerticallyCenteredModal = (props) => {
     const [genus, setGenus] = useState('')
 
     useEffect( () => {
+        const pokeEntry = () => {
+            axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || ''}`)
+            .then( ({data}) => {
+                setFlavorText(data.flavor_text_entries[47].flavor_text);
+                setEgg(data.egg_groups);
+                setGenus(data.genera[7].genus)
+            })
+        }
         pokeEntry();
     })
 
-    const pokeEntry = () => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || ''}`)
-        .then( ({data}) => {
-            setFlavorText(data.flavor_text_entries[47].flavor_text);
-            setEgg(data.egg_groups);
-            setGenus(data.genera[7].genus)
-        })
-    }
+
     
     return (
       <Modal

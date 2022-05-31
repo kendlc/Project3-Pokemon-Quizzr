@@ -27,6 +27,9 @@ const PokeQuiz = () => {
 
 	return (
 		<Container>
+			<Row>
+
+			</Row>
 			{!showQuiz &&
 				<Row className="d-flex justify-content-center text-center">
 					<Col sm={4} style={{marginTop: '4rem'}}>
@@ -53,7 +56,7 @@ const PokeQuiz = () => {
 							</Row>
 							<Row>
 							<Button variant="secondary mx-auto mt-5 btn-lg" onClick={_handleQuiz} >
-								Quiz!
+								Start PokeQuiz!
 							</Button>
 							</Row>
 						</>
