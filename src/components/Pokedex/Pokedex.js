@@ -108,7 +108,7 @@ const Pokedex = () => {
                             </div>
                         </Col>
                         <Col sm={7}>
-                            <img src="./images/pikachu.webp" 
+                            <img src="./images/pikachu.webp" alt="Prof Pika"
                             width={500} 
                             className="img-fluid mr-5"/>
                         </Col>
@@ -164,7 +164,7 @@ const MyVerticallyCenteredModal = (props) => {
 
     useEffect( () => {
         pokeEntry();
-    },[props.pdata])
+    },[])
 
     const pokeEntry = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${props.pdata.id || ''}`)
@@ -219,7 +219,7 @@ const MyVerticallyCenteredModal = (props) => {
                                 ( (props.pdata.id >= 494) ? props.pdata.sprites.front_default :
                                 props.pdata.sprites.versions["generation-v"]["black-white"].animated.front_default) : ''}
                             className="align-self-center img-fluid" 
-                            style={{ width: '10rem', padding: '.3rem'}}
+                            style={{ width: '10rem', padding: '.3rem'}} alt="Poke Sprite"
                             />
                         </div>
                     </Col>

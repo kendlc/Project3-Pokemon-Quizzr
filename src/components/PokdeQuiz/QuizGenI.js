@@ -40,11 +40,12 @@ const QuizGenI = () => {
     useEffect( () => {
         setScore(points * 5 *  Math.floor(Math.random() * 5));
         setPokeballs(points * Math.floor(Math.random() * 5));
-    },[points])
-
-    useEffect( () => {
         handleDataDb()
-    },[showScore])
+    },[points, showScore])
+
+    // useEffect( () => {
+        
+    // },[showScore])
 
     const getPokeGuess = () => {
         for (let i = 0; i < 5; i++){

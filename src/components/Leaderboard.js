@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Container, Button } from "react-bootstrap";
+import React from "react";
+import { Container } from "react-bootstrap";
 // import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 // import { getFirestore, collection, doc, addDoc, setDoc, getDoc, getDocs, onSnapshot, query, where } from "firebase/firestore"; 
 // import { firebaseConfig } from "./Firebase-config";
