@@ -40,10 +40,10 @@ const QuizGenI = () => {
     useEffect( () => {
         setScore(points * 5 *  Math.floor(Math.random() * 5));
         setPokeballs(points * Math.floor(Math.random() * 5));
-        setDoc(doc(db, "users", uid), {
-            score:  increment(score),
-            pokeball: increment(pokeballs)
-        }, { merge: true });
+        // setDoc(doc(db, "users", uid), {
+        //     score:  increment(score),
+        //     pokeball: increment(pokeballs)
+        // }, { merge: true });
     },[points, showScore])
 
     // useEffect( () => {
