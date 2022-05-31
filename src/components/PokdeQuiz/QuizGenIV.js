@@ -8,7 +8,7 @@ import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 
 
-const QuizGenI = () => {
+const QuizGenIV = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
     const [showAnswer, setShowAnswer] = useState(false);
     const [unmask, setUnmask] = useState(false);
@@ -35,12 +35,12 @@ const QuizGenI = () => {
         const uid = localStorage.getItem('token');
         const getPokeGuess = () => {
             for (let i = 0; i < 5; i++){
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (151 - 1 + 1)) + 1)}`)
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (493 - 387 + 1)) + 387)}`)
                 .then( async ({data}) => {
                     const questionText = data.name
                     const id = data.id
                     const image = data.sprites.other["official-artwork"]["front_default"]
-                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`)
+                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=387&limit=493`)
                     .then( async ({data}) => {
                         const answerOptions = data.results
                         .map(value => ({ value, sort: Math.random() }))
@@ -296,4 +296,4 @@ const QuizGenI = () => {
 	);
 }
 
-export default QuizGenI;
+export default QuizGenIV;
