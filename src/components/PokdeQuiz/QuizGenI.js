@@ -33,6 +33,9 @@ const QuizGenI = () => {
     const uid = localStorage.getItem('token');
 
     useEffect( () => {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const uid = localStorage.getItem('token');
         const getPokeGuess = () => {
             for (let i = 0; i < 5; i++){
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (151 - 1 + 1)) + 1)}`)
@@ -75,6 +78,9 @@ const QuizGenI = () => {
     },[points])
 
     useEffect( () => {
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const uid = localStorage.getItem('token');
         const handleDataDb = () => {
             setDoc(doc(db, "users", uid), {
                 score:  increment(score),
