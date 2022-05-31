@@ -60,7 +60,7 @@ const Leaderboard = () => {
         <Container>
             {/* <Button onClick={ handleData }>Add data</Button> */}
             
-            Leaderboard coming soon
+            {/* Leaderboard coming soon */}
             <img src="http://www.fillmurray.com/400/400" alt="bill"/>
         </Container >
     );
