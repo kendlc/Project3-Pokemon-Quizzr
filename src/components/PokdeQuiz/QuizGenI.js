@@ -28,9 +28,6 @@ const QuizGenI = () => {
     const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
 
     const navigate = useNavigate();
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const uid = localStorage.getItem('token');
 
     useEffect( () => {
         const app = initializeApp(firebaseConfig);
@@ -77,7 +74,7 @@ const QuizGenI = () => {
         setPokeballs(points * Math.floor(Math.random() * (3 - 1 + 1)) + 1);
     },[points])
 
-    useEffect( () => {
+    useEffect( (score, pokeballs) => {
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const uid = localStorage.getItem('token');
