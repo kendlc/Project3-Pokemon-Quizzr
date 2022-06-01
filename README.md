@@ -11,7 +11,7 @@ Pokemon Quizzr is a web quiz app that lets you browse and search all pokemon on 
 * email: ash.pokequizr@gmail.com
 * password: chicken123!
 
-* or Sign In with Google!
+* or Sign up with Google
 
 ## Tech Stack
 * ReactJS
