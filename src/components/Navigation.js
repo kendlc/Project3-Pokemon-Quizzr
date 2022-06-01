@@ -21,11 +21,6 @@ const Navigation = () => {
         signInWithPopup(auth, provider)
         .then( async (result) => {
 
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-        
-        // The signed-in user info.
         const user = result.user;
         localStorage.setItem('token', user.uid);
         try {
@@ -41,17 +36,14 @@ const Navigation = () => {
           navigate('/')
         })
         .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        console.log(errorCode);
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        // The email of the user's account used.
-        const email = error.customData.email;
-        console.log(email);
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log(credential);
+            const errorCode = error.code;
+            console.log(errorCode);
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            const email = error.customData.email;
+            console.log(email);
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log(credential);
         });        
         
     };
@@ -60,11 +52,9 @@ const Navigation = () => {
         signOut(auth).then(() => {
             localStorage.removeItem('token');
             navigate('/')
-            // Sign-out successful.
             })
             .catch((error) => {
                 console.log(error)
-            // An error happened.
             });
     };
 
