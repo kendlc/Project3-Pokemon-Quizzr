@@ -207,8 +207,9 @@ const QuizGenII = () => {
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
                             onClick={ () => {
-                                stop();
-                                navigate('/leaderboard')}}>
+                                navigate('/leaderboard');
+                                window.location.reload();
+                            }}>
                                 Leaderboard
                             </Button> 
                             {/* <Button variant='secondary btn-lg m-1'

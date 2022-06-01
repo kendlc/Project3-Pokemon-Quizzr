@@ -97,3 +97,6 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 ### Possible future feature additions
 * PokeShop to buy Pokemon using Pokeballs earned in Quiz games.
 * PokeStorage to store Pokemon bought from PokeShop.
+* Page transitions
+* Play/Stop bg music button
+* Build in React Native

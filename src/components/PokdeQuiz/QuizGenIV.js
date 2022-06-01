@@ -207,7 +207,10 @@ const QuizGenIV = () => {
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
                             onMouseDown={() => stop()}
-                            onClick={ () => navigate('/leaderboard')}>
+                            onClick={ () => {
+                                navigate('/leaderboard');
+                                window.location.reload();
+                            }}>
                                 Leaderboard
                             </Button> 
                             {/* <Button variant='secondary btn-lg m-1'
