@@ -57,6 +57,7 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 * PokeQuiz tallies and display your score after 5 questions.
 * PokeQuiz has sound effects and background music that stops when game ends.
 * PokeQuiz gets random questions and shuffled answer options from Pokemon API.
+* PokeQuiz has 10 second timer.
 ---------------------------------------------------------------
 * Leaderboard displays Top 10 players with the highest scores.
 ---------------------------------------------------------------
