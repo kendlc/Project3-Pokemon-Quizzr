@@ -23,7 +23,7 @@ const QuizGenVIII = () => {
     const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
     const [username, setUsername] = useState('');
-    const [play] = useSound(buttonsFx, {
+    const [play, {stop}] = useSound(buttonsFx, {
 		volume: 0.4,
 	});
 
@@ -199,11 +199,13 @@ const QuizGenVIII = () => {
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
+                            onMouseDown={() => stop()}
                             onClick={ () => window.location.reload()}>
                                 Quiz again
                             </Button> 
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
+                            onMouseDown={() => stop()}
                             onClick={ () => navigate('/leaderboard')}>
                                 Leaderboard
                             </Button> 

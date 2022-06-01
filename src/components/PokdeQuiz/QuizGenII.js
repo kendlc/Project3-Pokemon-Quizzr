@@ -26,6 +26,7 @@ const QuizGenII = () => {
     const [play] = useSound(buttonsFx, {
 		volume: 0.4,
 	});
+    const [stop] = useSound(buttonsFx);
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
@@ -199,12 +200,15 @@ const QuizGenII = () => {
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
+                            onMouseDown={() => stop()}
                             onClick={ () => window.location.reload()}>
                                 Quiz again
                             </Button> 
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
-                            onClick={ () => navigate('/leaderboard')}>
+                            onClick={ () => {
+                                stop();
+                                navigate('/leaderboard')}}>
                                 Leaderboard
                             </Button> 
                             {/* <Button variant='secondary btn-lg m-1'
