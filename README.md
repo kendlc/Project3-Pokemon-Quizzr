@@ -92,7 +92,7 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 <img src="/public/images/m-transaction2.png" width="250" alt="mobile web transaction">
 <img src="/public/images/m-transaction5.png" width="250" alt="mobile web transaction"></span> -->
 
----------------------------------------------------------------
+<!-- --------------------------------------------------------------- -->
 ### Possible future feature additions
 * PokeShop to buy Pokemon using Pokeballs earned in Quiz games.
 * PokeStorage to store Pokemon bought from PokeShop.
