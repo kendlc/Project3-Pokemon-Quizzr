@@ -39,21 +39,27 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 * Users can access Pokedex to browse and search pokemons.
 * Users can view Leaderboard to see who is on Top 10 scores.
 * Users can Sign in with Google Account to Play the Pokemon Quiz Game.
+*
 * App is responsive on all screens (mobile, large desktop screens).
 * App features Home, Pokedex, PokeQuiz, and Leaderboard Routes.
 * App has responsive Navigation bar and footer.
+* 
 * Home page displays landing page text, Sign In/ Play Quiz Button, Featured Pokemon Carousel, Mini Leaderboard(Top 3).
 * Featured Pokemon Carousel randomly displays data on from 905 pokemons on page refresh.
+* 
 * Pokedex has Search and Browse Pokemon Generation (1-8) function to find data on all 905 Pokemon.
 * Pokedex displays Modal data for each pokemon clicked.
 * Pokedex displays Pokemon image, gif, id, species, element types, egg group, height, and text entry.
+* 
 * PokeQuiz displays User data (Name, Score and Pokeballs earned).
 * PokeQuiz features option to choose which Generation(1-8) to Quiz.
 * PokeQuiz features silhouette guessing game.
 * PokeQuiz tallies and display your score after 5 questions.
 * PokeQuiz has sound effects and background music that stops when game ends.
 * PokeQuiz gets random questions and shuffled answer options from Pokemon API.
+* 
 * Leaderboard displays Top 10 players with the highest scores.
+* 
 * Users can Sign out from the Navigation Bar.
 
 ---------------------------------------------------------------
