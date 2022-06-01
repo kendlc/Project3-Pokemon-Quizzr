@@ -20,7 +20,7 @@ import music from './sounds/pokequizsound2.mp3';
 
 
 const PokeQuiz = () => {
-	const [genSelect, setGenSelect] = useState(1);
+	const [genSelect, setGenSelect] = useState('1');
 	const [genQuiz, setGenQuiz] = useState('');
 	const [showQuiz, setShowQuiz] = useState(false);
     const [username, setUsername] = useState('');

@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
-
+import useSound from "use-sound";
+import buttonsFx from './sounds/pokequizsound3.mp3';
 
 const QuizGenI = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -22,6 +23,9 @@ const QuizGenI = () => {
     const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
     const [username, setUsername] = useState('');
+    const [play] = useSound(buttonsFx, {
+		volume: 0.4,
+	});
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
@@ -121,13 +125,13 @@ const QuizGenI = () => {
                     setQuestionNumber(questionNumber + 1);
                 }
                 // setTimeout( () => {
-                const time = new Date();
-                time.setSeconds(time.getSeconds() + 10);
-                restart(time);
-                
-                if (nextQuestion === pokeQuest.length) {
-                    setShowScore(true);
-                }
+                    const time = new Date();
+                    time.setSeconds(time.getSeconds() + 10);
+                    restart(time);
+                    
+                    if (nextQuestion === pokeQuest.length) {
+                        setShowScore(true);
+                    }
 
                 // }, 50);
             },2000);
@@ -280,6 +284,7 @@ const QuizGenI = () => {
                                         style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
                                         onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
                                         className="text-capitalize"
+                                        onMouseDown={() => play()}
                                         >
                                         {answerOption.answerText}
                                         </Button>
