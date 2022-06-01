@@ -4,6 +4,15 @@ Pokemon Quizzr is a web quiz app that lets you browse and search all pokemon on 
 ## Try it here!
 ## [Pokemon-Quizzr](https://pokemon-quizzr.netlify.app/)
 
+### Logins
+* email: red.pokequizzr@gmail.com
+* password: chicken123!
+
+* email: ash.pokequizr@gmail.com
+* password: chicken123!
+
+* or Sign In with Google!
+
 ## Tech Stack
 * ReactJS
 * Firebase
@@ -15,16 +24,6 @@ Pokemon Quizzr is a web quiz app that lets you browse and search all pokemon on 
 * CSS
 * Timer-react-hook
 * Use-sound react-hook
-
-
-### Logins
-* email: red.pokequizzr@gmail.com
-* password: chicken123!
-
-* email: ash.pokequizr@gmail.com
-* password: chicken123!
-
-* or Sign In with Google!
 
 ---------------------------------------------------------------
 ## Introduction
