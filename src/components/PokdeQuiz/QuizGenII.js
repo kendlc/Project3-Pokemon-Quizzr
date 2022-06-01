@@ -8,6 +8,7 @@ import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
+import buttonsSuc from './sounds/pokequizsound4.mp3';
 
 const QuizGenII = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -27,6 +28,9 @@ const QuizGenII = () => {
 		volume: 0.4,
 	});
     const [stop] = useSound(buttonsFx);
+    const [success] = useSound(buttonsSuc, {
+		volume: 0.2,
+	});
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
@@ -131,6 +135,7 @@ const QuizGenII = () => {
                 restart(time);
                 
                 if (nextQuestion === pokeQuest.length) {
+                    success();
                     setShowScore(true);
                 }
 
