@@ -2,8 +2,8 @@ import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Pokedex from './Pokedex/Pokedex';
-import PokeProfile from './FeaturesSoon/PokeProfile';
-// import PokeQuiz from './PokdeQuiz/PokeQuiz';
+// import PokeProfile from './FeaturesSoon/PokeProfile';
+import PokeQuiz from './PokdeQuiz/PokeQuiz';
 // import PokeShop from './PokeShop';
 import Leaderboard from './Leaderboard';
 import Navigation from './Navigation';
@@ -34,9 +34,9 @@ function App() {
               <Routes>
                 <Route exact path="/" element={ <Home /> } />
                 <Route path="/pokedex" element={ <Pokedex />} />
-                <Route path="/pokeprofile" element={ <PokeProfile />} />
-                {/* <Route path="/pokequiz" element={ <PokeQuiz />} />
-                <Route path="/pokeshop" element={ <PokeShop />} /> */}
+                {/* <Route path="/pokeprofile" element={ <PokeProfile />} /> */}
+                <Route path="/pokequiz" element={ <PokeQuiz />} />
+                {/* <Route path="/pokeshop" element={ <PokeShop />} /> */}
                 <Route path="/leaderboard" element={ <Leaderboard />} />
               </Routes>
           </ Container>
