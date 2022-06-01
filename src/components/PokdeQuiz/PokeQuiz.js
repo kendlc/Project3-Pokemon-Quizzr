@@ -69,7 +69,7 @@ const PokeQuiz = () => {
 				{isAuth() &&
 					<Row>
 						<Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
-							<span className="mx-4">{username.split(' ')[0]}'s</span>
+							<span className="mx-4">Player: {username.split(' ')[0]}</span>
 							<span className="mx-4">Score:  {fetchedScoreDb}</span>
 							<span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
 						</Col>
