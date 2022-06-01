@@ -205,7 +205,7 @@ const MyVerticallyCenteredModal = (props) => {
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter text-capitalize">
                 { props.pdata ? `# ${ props.pdata.id}` : ''}
-                <span className="text-capitalize">{ props.pdata ? `${ props.pdata.name}` : ''}</span>
+                <span className="text-capitalize"> { props.pdata ? `${ props.pdata.name}` : ''}</span>
 
                 </Modal.Title>
             </Modal.Header>
