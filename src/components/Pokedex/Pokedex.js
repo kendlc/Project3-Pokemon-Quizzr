@@ -38,8 +38,8 @@ const Pokedex = () => {
 
     return (
         <Container>
-            <Navbar expand="lg">
-                <Container>
+            <Navbar expand="lg" >
+                <Container className="justify-content-center d-flex">
                     <Nav className="mr-5">
                         <Navbar.Text 
                         className="align-text-top" 

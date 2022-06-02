@@ -194,11 +194,11 @@ const QuizGenIII = () => {
                         </Col>
                     </Row>
                     <Row >
-                        <Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
-                            <span className="mx-4">{username.split(' ')[0]}</span>
-                            <span className="mx-4">Score:  {fetchedScoreDb}</span>
-                            <span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
-                        </Col>
+                        <Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
+							<span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
+							<span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
+							<span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+						</Col>
                     </Row>
                     <Row>
                         <Col className='d-flex justify-content-center mt-5'>

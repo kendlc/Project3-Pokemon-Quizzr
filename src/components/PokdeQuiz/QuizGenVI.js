@@ -194,11 +194,11 @@ const QuizGenVI = () => {
                         </Col>
                     </Row>
                     <Row >
-                        <Col className='d-flex justify-content-center mt-4 pokeText1' style={{fontSize: '2rem'}}>
-                            <span className="mx-4">{username.split(' ')[0]}</span>
-                            <span className="mx-4">Score:  {fetchedScoreDb}</span>
-                            <span className="mx-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
-                        </Col>
+                        <Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
+							<span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
+							<span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
+							<span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+						</Col>
                     </Row>
                     <Row>
                         <Col className='d-flex justify-content-center mt-5'>
@@ -256,7 +256,7 @@ const QuizGenVI = () => {
                                 alt="pokequiz"/>
                             </div>
                             <Row className='d-sm-none d-flex justify-content-around pokeText1' style={{fontSize: '6vw'}}>
-							<Col className='d-flex justify-content-center'>Q {questionNumber <= 5 ? questionNumber + 1 : '5'}/5
+							    <Col className='d-flex justify-content-center'>Q {questionNumber <= 5 ? questionNumber + 1 : '5'}/5
                             </Col >
                             <Col className='d-flex justify-content-center'>PTS {points}
                             </Col>
