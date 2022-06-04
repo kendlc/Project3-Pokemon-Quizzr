@@ -1,17 +1,19 @@
 # Pokemon Quizzr
-Pokemon Quizzr is a web quiz app that lets you browse and search all pokemon on the Pokedex, play a quiz game of any pokemon generation of your choice, and tracks your score to be display on the Leaderboard.
+Pokemon Quizzr is a web quiz app that lets you browse and search all 898 pokemon on the Pokedex, play a quiz game of any pokemon generation of your choice, and tracks your score to be display on the Leaderboard.
 
 ## Try it here!
 ## [Pokemon-Quizzr](https://pokemon-quizzr.netlify.app/)
 
 ### Logins
+* Sign In / Sign Up with Google
+
 * email: red.pokequizzr@gmail.com
 * password: chicken123!
 
 * email: ash.pokequizr@gmail.com
 * password: chicken123!
 
-* or Sign up with Google
+
 
 ## Tech Stack
 * ReactJS
