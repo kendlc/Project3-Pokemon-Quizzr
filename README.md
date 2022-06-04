@@ -75,6 +75,7 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 
 ### Web view 
 
+
 <img src="/public/screenshots/ss1.png" width="400" alt="home">
 <img src="/public/screenshots/ss2.png" width="400" alt="pokedex">
 <img src="/public/screenshots/ss3.png" width="400" alt="pokedex search">
