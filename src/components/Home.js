@@ -20,7 +20,7 @@ const Home = () => {
                             Test your Pokemon knowledge and become the Poke Quizzr Champion!
                         </p>
                         <p className="text-sm-left mb-4" style={{fontSize: '18px', color: 'gray'}}>
-                            Climb your way to the top through the <strong>POKEDEX</strong> where you can study all 905 pokemons!
+                            Climb your way to the top through the <strong>POKEDEX</strong> where you can study all 898 pokemons!
                         </p>
                         <p className="text-sm-left mb-4" style={{fontSize: '18px', color: 'gray'}}>
                             Be the very best and top the <strong>LEADERBOARD</strong>!

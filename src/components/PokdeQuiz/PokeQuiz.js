@@ -59,7 +59,7 @@ const PokeQuiz = () => {
 		play();
 		setTimeout( () => {
 			play1();
-		}, 3000)
+		}, 1100)
 	}
 
 	return (

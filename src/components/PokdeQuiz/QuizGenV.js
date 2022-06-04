@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
 import buttonsSuc from './sounds/pokequizsound4.mp3';
+import revealSfx from './sounds/pokequizsound5.mp3';
 
 const QuizGenV = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -24,16 +25,23 @@ const QuizGenV = () => {
     const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
     const [username, setUsername] = useState('');
-    const [play, {stop}] = useSound(buttonsFx, {
+    const [play] = useSound(buttonsFx, {
 		volume: 0.4,
 	});
     const [success] = useSound(buttonsSuc, {
 		volume: 0.2,
 	});
+    const [reveal] = useSound(revealSfx, {
+		volume: 0.5,
+	});
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
-    const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
+    const { seconds, restart, pause} = useTimer({ expiryTimestamp, onExpire: () => {
+        if (showScore === false) {
+            handleAnswerOptionClick();
+        }
+    }});
 
     const navigate = useNavigate();
 
@@ -102,13 +110,16 @@ const QuizGenV = () => {
 
 
 	const handleAnswerOptionClick = (isCorrect) => {
+        pause();
+        setTimeout( () =>
+            reveal()
+        ,150);
         setButtonDisable(true);
 
         const nextQuestion = currentQuestion + 1;
                 
         if (nextQuestion < pokeQuest.length +  1) {
-            pause();
-            setShowAnswer(true);
+             setShowAnswer(true);
             setUnmask(true);
 
             setTimeout( () => {
@@ -128,7 +139,7 @@ const QuizGenV = () => {
                 if (questionNumber <= 3) {
                     setQuestionNumber(questionNumber + 1);
                 }
-                // setTimeout( () => {
+
                 const time = new Date();
                 time.setSeconds(time.getSeconds() + 10);
                 restart(time);
@@ -137,8 +148,6 @@ const QuizGenV = () => {
                     success();
                     setShowScore(true);
                 }
-
-                // }, 50);
             },2000);
         }
 	};
@@ -204,13 +213,11 @@ const QuizGenV = () => {
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
-                            onMouseDown={() => stop()}
                             onClick={ () => window.location.reload()}>
                                 Quiz again
                             </Button> 
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
-                            onMouseDown={() => stop()}
                             onClick={ () => {
                                 navigate('/leaderboard');
                                 window.location.reload();

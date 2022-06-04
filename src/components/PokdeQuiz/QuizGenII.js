@@ -9,6 +9,8 @@ import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
 import buttonsSuc from './sounds/pokequizsound4.mp3';
+import revealSfx from './sounds/pokequizsound5.mp3';
+
 
 const QuizGenII = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -27,9 +29,11 @@ const QuizGenII = () => {
     const [play] = useSound(buttonsFx, {
 		volume: 0.4,
 	});
-    const [stop] = useSound(buttonsFx);
     const [success] = useSound(buttonsSuc, {
 		volume: 0.2,
+	});
+    const [reveal] = useSound(revealSfx, {
+		volume: 0.5,
 	});
 
     const expiryTimestamp = new Date();
@@ -108,6 +112,9 @@ const QuizGenII = () => {
         const nextQuestion = currentQuestion + 1;
                 
         if (nextQuestion < pokeQuest.length +  1) {
+            setTimeout( () =>
+                reveal()
+            ,150);
             pause();
             setShowAnswer(true);
             setUnmask(true);
@@ -129,7 +136,6 @@ const QuizGenII = () => {
                 if (questionNumber <= 3) {
                     setQuestionNumber(questionNumber + 1);
                 }
-                // setTimeout( () => {
                 const time = new Date();
                 time.setSeconds(time.getSeconds() + 10);
                 restart(time);
@@ -138,8 +144,6 @@ const QuizGenII = () => {
                     success();
                     setShowScore(true);
                 }
-
-                // }, 50);
             },2000);
         }
 	};
@@ -205,7 +209,6 @@ const QuizGenII = () => {
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
-                            onMouseDown={() => stop()}
                             onClick={ () => window.location.reload()}>
                                 Quiz again
                             </Button> 

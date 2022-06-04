@@ -83,7 +83,6 @@ const Navigation = () => {
                 { !isAuth() &&
                     <>
                         <Nav.Link onClick={_handleSignIn}>Sign In</Nav.Link>
-
                     </>
                 }
                 { isAuth() &&

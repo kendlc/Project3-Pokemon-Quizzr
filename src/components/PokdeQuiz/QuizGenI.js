@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
 import buttonsSuc from './sounds/pokequizsound4.mp3';
+import revealSfx from './sounds/pokequizsound5.mp3';
 
 const QuizGenI = () => {
     const [pokeQuest, setPokeQuest ] = useState([]);
@@ -24,11 +25,14 @@ const QuizGenI = () => {
     const [fetchedPokeballDb, setFetchedPokeballDb] = useState('');
     const [fetchedScoreDb, setFetchedScoreDb] = useState('');
     const [username, setUsername] = useState('');
-    const [play, { stop }] = useSound(buttonsFx, {
+    const [play] = useSound(buttonsFx, {
 		volume: 0.4,
 	});
     const [success] = useSound(buttonsSuc, {
 		volume: 0.2,
+	});
+    const [reveal] = useSound(revealSfx, {
+		volume: 0.5,
 	});
     
 
@@ -103,6 +107,9 @@ const QuizGenI = () => {
 
 
 	const handleAnswerOptionClick = (isCorrect) => {
+        setTimeout( () =>
+            reveal()
+        ,150);
         setButtonDisable(true);
 
         const nextQuestion = currentQuestion + 1;
@@ -129,7 +136,6 @@ const QuizGenI = () => {
                 if (questionNumber <= 3) {
                     setQuestionNumber(questionNumber + 1);
                 }
-                // setTimeout( () => {
                     const time = new Date();
                     time.setSeconds(time.getSeconds() + 10);
                     restart(time);
@@ -138,8 +144,6 @@ const QuizGenI = () => {
                         success();
                         setShowScore(true);
                     }
-
-                // }, 50);
             },2000);
         }
 	};
@@ -205,7 +209,6 @@ const QuizGenI = () => {
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
                             style={{borderRadius: '4rem'}}
-                            onMouseDown={() => stop()}
                             onClick={ () => window.location.reload()}>
                                 Quiz again
                             </Button> 
@@ -294,7 +297,9 @@ const QuizGenI = () => {
                                         style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
                                         onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
                                         className="text-capitalize"
-                                        onMouseDown={() => play()}
+                                        onMouseDown={() => {
+                                            play();
+                                        }}
                                         >
                                         {answerOption.answerText}
                                         </Button>
