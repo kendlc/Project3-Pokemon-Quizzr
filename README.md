@@ -7,11 +7,13 @@ Pokemon Quizzr is a web quiz app that lets you browse and search all 898 pokemon
 ### Logins
 * Sign In / Sign Up with Google
 
-* email: red.pokequizzr@gmail.com
-* password: chicken123!
+`email: red.pokequizzr@gmail.com`
 
-* email: ash.pokequizr@gmail.com
-* password: chicken123!
+`password: chicken123!`
+
+`email: ash.pokequizr@gmail.com`
+
+`password: chicken123!`
 
 
 
