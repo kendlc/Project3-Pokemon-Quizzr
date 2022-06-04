@@ -65,10 +65,11 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 
 ---------------------------------------------------------------
 
-<!-- ## Approach
+## Approach
 
+In my Final Project in General Assembly, I wanted to do a web app where I can apply the things that I have learned in Full stack development. For this reason, I thought of a project that would utilise APIs, Frontend client, and backend server. As a result, I decided to opt for a Quiz game web app built on Pokemon API, React JS, and Firebase/ Firestore. 
 
---------------------------------------------------------------- -->
+---------------------------------------------------------------
 
 
 ## Screenshots
