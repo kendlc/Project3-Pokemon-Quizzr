@@ -56,7 +56,7 @@ const QuizGenIV = () => {
                     const questionText = data.name
                     const id = data.id
                     const image = data.sprites.other["official-artwork"]["front_default"]
-                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=387&limit=493`)
+                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=386&limit=107`)
                     .then( async ({data}) => {
                         const answerOptions = data.results
                         .map(value => ({ value, sort: Math.random() }))

@@ -51,12 +51,12 @@ const QuizGenVIII = () => {
         const uid = localStorage.getItem('token');
         const getPokeGuess = () => {
             for (let i = 0; i < 5; i++){
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (905 - 810 + 1)) + 810)}`)
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (898 - 810 + 1)) + 810)}`)
                 .then( async ({data}) => {
                     const questionText = data.name
                     const id = data.id
                     const image = data.sprites.other["official-artwork"]["front_default"]
-                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=810&limit=905`)
+                     await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=809&limit=89`)
                     .then( async ({data}) => {
                         const answerOptions = data.results
                         .map(value => ({ value, sort: Math.random() }))
