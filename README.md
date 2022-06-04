@@ -75,29 +75,29 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 
 ### Web view 
 
-<img src="/public/sreenshots/ss1.png" width="400" alt="home">
-<img src="/public/sreenshots/ss2.png" width="400" alt="pokedex">
-<img src="/public/sreenshots/ss3.png" width="400" alt="pokedex search">
-<img src="/public/sreenshots/ss4.png" width="400" alt="leaderboard">
-<img src="/public/sreenshots/ss5.png" width="400" alt="pokequiz landing">
-<img src="/public/sreenshots/ss6.png" width="400" alt="pokequiz 1">
-<img src="/public/sreenshots/ss7.png" width="400" alt="pokequiz 2">
-<img src="/public/sreenshots/ss8.png" width="400" alt="pokequiz 3">
+<img src="/public/screenshots/ss1.png" width="400" alt="home">
+<img src="/public/screenshots/ss2.png" width="400" alt="pokedex">
+<img src="/public/screenshots/ss3.png" width="400" alt="pokedex search">
+<img src="/public/screenshots/ss4.png" width="400" alt="leaderboard">
+<img src="/public/screenshots/ss5.png" width="400" alt="pokequiz landing">
+<img src="/public/screenshots/ss6.png" width="400" alt="pokequiz 1">
+<img src="/public/screenshots/ss7.png" width="400" alt="pokequiz 2">
+<img src="/public/screenshots/ss8.png" width="400" alt="pokequiz 3">
 
 
 
 
 ### Mobile Web view 
 
-<img src="/public/sreenshots/ss1m.png" width="250" alt="home">
-<img src="/public/sreenshots/ss2m.png" width="250" alt="pokedex">
-<img src="/public/sreenshots/ss3m.png" width="250" alt="leaderboard">
-<img src="/public/sreenshots/ss4m.png" width="250" alt="pokequiz 1">
-<img src="/public/sreenshots/ss5m.png" width="250" alt="pokequiz 2">
-<img src="/public/sreenshots/ss6m.png" width="250" alt="pokequiz 3">
+<img src="/public/screenshots/ss1m.png" width="250" alt="home">
+<img src="/public/screenshots/ss2m.png" width="250" alt="pokedex">
+<img src="/public/screenshots/ss3m.png" width="250" alt="leaderboard">
+<img src="/public/screenshots/ss4m.png" width="250" alt="pokequiz 1">
+<img src="/public/screenshots/ss5m.png" width="250" alt="pokequiz 2">
+<img src="/public/screenshots/ss6m.png" width="250" alt="pokequiz 3">
 
 
-<!-- ---------------------------------------------------------------
+---------------------------------------------------------------
 ### Possible future feature additions
 * PokeShop to buy Pokemon using Pokeballs earned in Quiz games.
 * PokeStorage to store Pokemon bought from PokeShop.
