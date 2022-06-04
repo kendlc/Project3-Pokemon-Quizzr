@@ -71,29 +71,33 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 --------------------------------------------------------------- -->
 
 
-<!-- ## Screenshots
+## Screenshots
 
 ### Web view 
 
-<span><img src="/public/images/w-login.png" width="400" alt="web login">
-<img src="/public/images/w-signup.png" width="400" alt="web signup"></span>
-<img src="/public/images/w-profile.png" width="400" alt="web profile">
-<span><img src="/public/images/w-transaction1.png" width="400" alt="web transaction">
-<img src="/public/images/w-transaction2.png" width="400" alt="web transaction">
-<img src="/public/images/w-transaction3.png" width="400" alt="web transaction"></span>
+<img src="/public/sreenshots/ss1" width="400" alt="home">
+<img src="/public/sreenshots/ss2" width="400" alt="pokedex">
+<img src="/public/sreenshots/ss3" width="400" alt="pokedex search">
+<img src="/public/sreenshots/ss4" width="400" alt="leaderboard">
+<img src="/public/sreenshots/ss5" width="400" alt="pokequiz landing">
+<img src="/public/sreenshots/ss6" width="400" alt="pokequiz 1">
+<img src="/public/sreenshots/ss7" width="400" alt="pokequiz 2">
+<img src="/public/sreenshots/ss8" width="400" alt="pokequiz 3">
+
 
 
 
 ### Mobile Web view 
 
-<span><img src="/public/images/m-login.png" width="250" alt="mobile web login">
-<img src="/public/images/m-signup2.png" width="250" alt="mobile web signup">
-<img src="/public/images/m-profile.png" width="250" alt="mobile web profile"></span>
-<span><img src="/public/images/m-transaction1.png" width="250" alt="mobile web transaction">
-<img src="/public/images/m-transaction2.png" width="250" alt="mobile web transaction">
-<img src="/public/images/m-transaction5.png" width="250" alt="mobile web transaction"></span> -->
+<img src="/public/sreenshots/ss1m" width="250" alt="home">
+<img src="/public/sreenshots/ss2m" width="250" alt="pokedex">
+<img src="/public/sreenshots/ss3m" width="250" alt="leaderboard">
+<img src="/public/sreenshots/ss4m" width="250" alt="pokequiz 1">
+<img src="/public/sreenshots/ss5m" width="250" alt="pokequiz 2">
+<img src="/public/sreenshots/ss6m" width="250" alt="pokequiz 3">
 
-<!-- --------------------------------------------------------------- -->
+
+<!-- ---------------------------------------------------------------
 ### Possible future feature additions
 * PokeShop to buy Pokemon using Pokeballs earned in Quiz games.
 * PokeStorage to store Pokemon bought from PokeShop.

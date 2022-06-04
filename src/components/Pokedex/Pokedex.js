@@ -238,29 +238,33 @@ const MyVerticallyCenteredModal = (props) => {
                             }
                         </p>
                         <p> { flavorText } </p>
-                        <div
+                        <Row 
                         style={{ justifyContent: 'space-around'}}
                         >
-                            { egg && 
-                            <span>Egg Group:
-                                { egg.map( (e) => {
-                                    return (
-                                        <Button key={ Math.random() } variant="outline-secondary" className="btn-sm mx-1 text-capitalize" disabled>
-                                            {e.name}
-                                        </Button>
-                                    )
-                                })}
-                            </span>
-                            }
-                            <span className="mx-5">
-                                Height:
-                                <Button variant="outline-secondary" className="btn-sm mx-1" disabled>
-                                    {props.pdata ?
-                                    props.pdata.height/10
-                                    : '' } m
-                                </Button>
-                            </span>
-                        </div>
+                            <Col  className="text-center text-sm-start">
+                                { egg && 
+                                <span>Egg Group:
+                                    { egg.map( (e) => {
+                                        return (
+                                            <Button key={ Math.random() } variant="outline-secondary" className="btn-sm mx-1 text-capitalize" disabled>
+                                                {e.name}
+                                            </Button>
+                                        )
+                                    })}
+                                </span>
+                                }
+                            </Col>
+                            <Col>
+                                <span>
+                                    Height:
+                                    <Button variant="outline-secondary" className="btn-sm mx-1" disabled>
+                                        {props.pdata ?
+                                        props.pdata.height/10
+                                        : '' } m
+                                    </Button>
+                                </span>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Modal.Body>
