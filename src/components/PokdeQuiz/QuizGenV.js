@@ -37,9 +37,9 @@ const QuizGenV = () => {
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
-    const { seconds, restart, pause} = useTimer({ expiryTimestamp, onExpire: () => {
-        if (showScore === false) {
-            handleAnswerOptionClick();
+    const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => {
+        if (!showScore){
+            handleAnswerOptionClick() 
         }
     }});
 
@@ -110,7 +110,6 @@ const QuizGenV = () => {
 
 
 	const handleAnswerOptionClick = (isCorrect) => {
-        pause();
         setTimeout( () =>
             reveal()
         ,150);
@@ -119,7 +118,8 @@ const QuizGenV = () => {
         const nextQuestion = currentQuestion + 1;
                 
         if (nextQuestion < pokeQuest.length +  1) {
-             setShowAnswer(true);
+            pause();
+            setShowAnswer(true);
             setUnmask(true);
 
             setTimeout( () => {

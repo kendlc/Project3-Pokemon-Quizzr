@@ -38,7 +38,11 @@ const QuizGenII = () => {
 
     const expiryTimestamp = new Date();
     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
-    const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => handleAnswerOptionClick() });
+    const { seconds, restart,pause} = useTimer({ expiryTimestamp, onExpire: () => {
+        if (!showScore){
+            handleAnswerOptionClick() 
+        }
+    }});
 
     const navigate = useNavigate();
 
