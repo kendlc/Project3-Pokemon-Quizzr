@@ -75,26 +75,26 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 
 ### Web view 
 
-<img src="/public/sreenshots/ss1" width="400" alt="home">
-<img src="/public/sreenshots/ss2" width="400" alt="pokedex">
-<img src="/public/sreenshots/ss3" width="400" alt="pokedex search">
-<img src="/public/sreenshots/ss4" width="400" alt="leaderboard">
-<img src="/public/sreenshots/ss5" width="400" alt="pokequiz landing">
-<img src="/public/sreenshots/ss6" width="400" alt="pokequiz 1">
-<img src="/public/sreenshots/ss7" width="400" alt="pokequiz 2">
-<img src="/public/sreenshots/ss8" width="400" alt="pokequiz 3">
+<img src="/public/sreenshots/ss1.png" width="400" alt="home">
+<img src="/public/sreenshots/ss2.png" width="400" alt="pokedex">
+<img src="/public/sreenshots/ss3.png" width="400" alt="pokedex search">
+<img src="/public/sreenshots/ss4.png" width="400" alt="leaderboard">
+<img src="/public/sreenshots/ss5.png" width="400" alt="pokequiz landing">
+<img src="/public/sreenshots/ss6.png" width="400" alt="pokequiz 1">
+<img src="/public/sreenshots/ss7.png" width="400" alt="pokequiz 2">
+<img src="/public/sreenshots/ss8.png" width="400" alt="pokequiz 3">
 
 
 
 
 ### Mobile Web view 
 
-<img src="/public/sreenshots/ss1m" width="250" alt="home">
-<img src="/public/sreenshots/ss2m" width="250" alt="pokedex">
-<img src="/public/sreenshots/ss3m" width="250" alt="leaderboard">
-<img src="/public/sreenshots/ss4m" width="250" alt="pokequiz 1">
-<img src="/public/sreenshots/ss5m" width="250" alt="pokequiz 2">
-<img src="/public/sreenshots/ss6m" width="250" alt="pokequiz 3">
+<img src="/public/sreenshots/ss1m.png" width="250" alt="home">
+<img src="/public/sreenshots/ss2m.png" width="250" alt="pokedex">
+<img src="/public/sreenshots/ss3m.png" width="250" alt="leaderboard">
+<img src="/public/sreenshots/ss4m.png" width="250" alt="pokequiz 1">
+<img src="/public/sreenshots/ss5m.png" width="250" alt="pokequiz 2">
+<img src="/public/sreenshots/ss6m.png" width="250" alt="pokequiz 3">
 
 
 <!-- ---------------------------------------------------------------
