@@ -79,9 +79,16 @@ const PokeQuiz = () => {
 					<Col sm={4} >
 						
 					{ !isAuth() &&
-						<div className="d-flex justify-content-end">
+						<>
+							<div
+							className="d-none d-sm-block"
+							style={{height: '16vh'}}>
+							</div>
+							<div className="d-flex justify-content-center justify-content-sm-end mt-5">
 							<Authentication />
-						</div>
+							</div>
+						</>
+						
 					}
 					{ isAuth() &&
 						<>
