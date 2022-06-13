@@ -7,11 +7,13 @@ Pokemon Quizzr is a web quiz app that lets you browse and search all 898 pokemon
 ### Logins
 * Sign In / Sign Up with Google
 
-* email: red.pokequizzr@gmail.com
-* password: chicken123!
+`email: red.pokequizzr@gmail.com`
 
-* email: ash.pokequizr@gmail.com
-* password: chicken123!
+`password: chicken123!`
+
+`email: ash.pokequizr@gmail.com`
+
+`password: chicken123!`
 
 
 
@@ -69,7 +71,7 @@ This project was inspired to utilise APIs, Fronend (React) and Backend (Firebase
 
 ## Approach
 
-In my Final Project in General Assembly, I wanted to do a web app where I can apply the things that I have learned in Full stack development. For this reason, I thought of a project that would utilise APIs, Frontend client, and backend server. As a result, I decided to opt for a Quiz game web app built on Pokemon API, React JS, and Firebase/ Firestore. 
+In my Final Project in General Assembly, I wanted to do a web app where I can apply the things that I have learned in Full stack development. For this reason, I thought of a project that would utilise APIs, Frontend client, and backend server. As a result, I decided to opt for a Quiz game web app built on Pokemon API, React JS, and Firebase/ Firestore where users can sign in, browse data, play quizzes and record scores on a leaderboard.
 
 ---------------------------------------------------------------
 
