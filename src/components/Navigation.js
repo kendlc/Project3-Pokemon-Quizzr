@@ -62,18 +62,46 @@ const Navigation = () => {
     return (
         <Navbar sticky="top" bg="light" expand="lg">
         <Container>
-            <Navbar.Brand href="/">
+            <Navbar.Brand 
+            onClick={ () => {
+                navigate('/');
+                window.location.reload();
+            }}>
                 <img src="/images/pokemonlogo.png" className="img-fluid" width={150} alt="PokeQuiz Logo"/>
                 <img src="/images/quizzr.png" className="img-fluid" width={100} alt="PokeQuiz Logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="justify-content-start flex-grow-1 pe-3">
-                <Nav.Link href="/#/pokedex">Pokedex</Nav.Link>
-                <Nav.Link href="/#/pokequiz">PokeQuiz</Nav.Link>
-                <Nav.Link href="/#/leaderboard">Leaderboard</Nav.Link>
+                <Nav.Link
+                onClick={ () => {
+                    navigate('/pokedex');
+                    window.location.reload();
+                }}>
+                    Pokedex
+                </Nav.Link>
+                <Nav.Link
+                onClick={ () => {
+                    navigate('/pokequiz');
+                    window.location.reload();
+                }}>
+                    PokeQuiz
+                </Nav.Link>
+                <Nav.Link
+                onClick={ () => {
+                    navigate('/leaderboard');
+                    window.location.reload();
+                }}>
+                    Leaderboard
+                </Nav.Link>
             </Nav>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="/">Home</Nav.Link>                
+                <Nav.Link
+                onClick={ () => {
+                    navigate('/');
+                    window.location.reload();
+                }}>
+                    Home
+                </Nav.Link>                
                 {/* { isAuth() &&
                     <>
                     <Nav.Link href="/pokeprofile">PokeStorage</Nav.Link>
@@ -87,7 +115,13 @@ const Navigation = () => {
                 }
                 { isAuth() &&
                     <>
-                        <Nav.Link onClick={_handleSignOut}>Sign Out</Nav.Link>
+                        <Nav.Link onClick={ () => {
+                            _handleSignOut();
+                            navigate('/leaderboard');
+                            window.location.reload();
+                        }}>
+                            Sign Out
+                        </Nav.Link>
                     </>
                 }                                
             </Nav>
