@@ -4,7 +4,7 @@ import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
 import { useNavigate } from "react-router-dom";
 import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
-import { firebaseConfig } from "../Firebase-config";
+import { firebaseConfig, isAuth } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
@@ -47,9 +47,7 @@ const QuizGenI = () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const uid = localStorage.getItem('token');
+
         const getPokeGuess = () => {
             for (let i = 0; i < 5; i++){
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${(Math.floor(Math.random() * (151 - 1 + 1)) + 1)}`)
@@ -75,6 +73,9 @@ const QuizGenI = () => {
                 })
             }
         };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const uid = localStorage.getItem('token');
         const getDataDb = () => {
             onSnapshot(doc(db, "users", uid), (doc) => {
             setFetchedScoreDb(doc.data().score);
@@ -83,7 +84,9 @@ const QuizGenI = () => {
             });
         }
         getPokeGuess();
-        getDataDb();
+        if (isAuth()){
+            getDataDb();
+        };
     },[]);
 
     const [scoreF, setScoreF] = useState(0);
@@ -106,7 +109,10 @@ const QuizGenI = () => {
                 pokeball: increment(pokeballsF)
             }, { merge: true });
         };
-        handleDataDb();
+
+        if (isAuth()){
+            handleDataDb();
+        };
     },[scoreF, pokeballsF])
 
 
@@ -202,13 +208,15 @@ const QuizGenI = () => {
                             className='img-fluid'/>
                         </Col>
                     </Row>
-					<Row>
-						<Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
-							<span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
-							<span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
-							<span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
-						</Col>
-					</Row>
+                    { isAuth() &&
+                        <Row>
+                            <Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
+                                <span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
+                                <span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
+                                <span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+                            </Col>
+                        </Row>
+                    }
                     <Row>
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'
@@ -295,7 +303,7 @@ const QuizGenI = () => {
                             </div>
                             <div className="d-grid gap-2 col-6 mx-auto float-center float-sm-start">
                             {
-                            pokeQuest[currentQuestion].shuffledOptions.map((answerOption) => (
+                                pokeQuest[currentQuestion].shuffledOptions.map((answerOption) => (
                                     <Row key={Math.random()} >
                                         <Button variant="danger p-2 m-2 shadow" disabled={buttonDisable}
                                         style={{fontSize: '2rem', borderRadius: '4rem', opacity: '0.7'}}
@@ -308,7 +316,8 @@ const QuizGenI = () => {
                                         {answerOption.answerText}
                                         </Button>
                                     </Row>
-                            ))}
+                                ))
+                            }
                             </div>
                         </Container>
                     }

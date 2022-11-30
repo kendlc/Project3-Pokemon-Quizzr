@@ -34,6 +34,7 @@ const Navigation = () => {
             console.error("Error adding document: ", e);
           };
           navigate('/')
+          window.location.reload();
         })
         .catch((error) => {
             const errorCode = error.code;

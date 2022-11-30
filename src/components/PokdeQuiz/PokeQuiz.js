@@ -3,7 +3,6 @@ import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { firebaseConfig } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import Authentication from "../Authentication";
 import { isAuth } from "../Firebase-config";
 import QuizGenI from "./QuizGenI";
 import QuizGenII from "./QuizGenII";
@@ -78,19 +77,19 @@ const PokeQuiz = () => {
 				<Row className="d-flex justify-content-center text-center mt-2">
 					<Col sm={4} >
 						
-					{ !isAuth() &&
+					{/* { !isAuth() &&
 						<>
 							<div
 							className="d-none d-sm-block"
 							style={{height: '16vh'}}>
 							</div>
-							<div className="d-flex justify-content-center justify-content-sm-end mt-5">
+							<div className="d-flex justify-content-center justify-content-sm-end mt-2">
 							<Authentication />
 							</div>
 						</>
 						
 					}
-					{ isAuth() &&
+					{ isAuth() && */}
 						<>
 							<Row className="mt-5">
 								<Form.Label className="pokeText1" style={{fontSize: '2rem'}}>Select Generation</Form.Label>
@@ -116,7 +115,7 @@ const PokeQuiz = () => {
 							</Row>
 
 						</>
-					}
+					{/* } */}
 				</Col>
 
 				<Col sm={4} style={{marginTop: '4rem'}}>
@@ -125,13 +124,13 @@ const PokeQuiz = () => {
 						className="img-fluid mt-4"/>
 				</Col>
 				</Row>
-				{ !isAuth() &&
+				{/* { !isAuth() && */}
 					<Row className="d-flex justify-content-center mt-5">
 						<Col sm={6}>
 						<FeaturedPokemons />
 						</Col>
 					</Row>
-				}
+				{/* } */}
 
 				</>
 			}

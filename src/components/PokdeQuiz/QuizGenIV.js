@@ -4,7 +4,7 @@ import { Col, Row, Container, Button, Table } from "react-bootstrap";
 import { useTimer } from 'react-timer-hook';
 import { useNavigate } from "react-router-dom";
 import { getFirestore, doc, setDoc, onSnapshot,increment } from "firebase/firestore"; 
-import { firebaseConfig } from "../Firebase-config";
+import { firebaseConfig, isAuth } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
 import buttonsFx from './sounds/pokequizsound3.mp3';
@@ -82,7 +82,9 @@ const QuizGenIV = () => {
             });
         }
         getPokeGuess();
-        getDataDb();
+        if (isAuth()){
+            getDataDb();
+        };
     },[]);
 
     const [scoreF, setScoreF] = useState(0);
@@ -105,7 +107,9 @@ const QuizGenIV = () => {
                 pokeball: increment(pokeballsF)
             }, { merge: true });
         };
-        handleDataDb();
+        if (isAuth()){
+            handleDataDb();
+        };
     },[scoreF, pokeballsF])
 
 
@@ -202,13 +206,15 @@ const QuizGenIV = () => {
                             className='img-fluid'/>
                         </Col>
                     </Row>
-                    <Row >
-                        <Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
-							<span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
-							<span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
-							<span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
-						</Col>
-                    </Row>
+                    { isAuth() &&
+                        <Row>
+                            <Col className='d-flex justify-content-center mt-4 mx-auto text-center pokeText1 mx-auto' style={{fontSize: '4vh'}}>
+                                <span className="mx-1 mx-sm-4">Quizer: {username.split(' ')[0]}</span>
+                                <span className="mx-1 mx-sm-4">Score:  {fetchedScoreDb}</span>
+                                <span className="mx-1 mx-sm-4">Pokeballs:  <img src="./images/greatball.png" alt="Greatball"/>  {fetchedPokeballDb}</span>
+                            </Col>
+                        </Row>
+                    }
                     <Row>
                         <Col className='d-flex justify-content-center mt-5'>
                             <Button variant='secondary btn-lg m-1'

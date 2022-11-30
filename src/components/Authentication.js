@@ -43,7 +43,6 @@ const Authentication = () => {
             const credential = GoogleAuthProvider.credentialFromError(error);
             console.log(credential);
         });        
-        
     };
 
     const _handlePlay = () => {
@@ -52,17 +51,16 @@ const Authentication = () => {
 
     return(
         <div>
-
-            { !isAuth() &&
-                <>
-                    <h1> Sign In to Quiz! </h1>
-                    <button  className="btn btn-secondary btn-lg" onClick={_handleSignIn}> Sign In </button>
-                </>
-            }
-            { isAuth() &&
+            {/* { isAuth() && */}
                 <>
                     <h2> Start Quizzing! </h2>
                     <button className="btn btn-secondary btn-lg" onClick={_handlePlay}> Play PokeQuiz </button>
+                </>
+            {/* } */}
+            { !isAuth() &&
+                <>
+                    <h4 style={{color: 'gray', marginTop: 40,}}> Compete on the Leaderboard </h4>
+                    <button  className="btn btn-secondary btn-lg" onClick={_handleSignIn}> Sign In! </button>
                 </>
             }
         </div>
