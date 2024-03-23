@@ -41,7 +41,7 @@ export const pokemonGenerationIndexes = [
   },
   {
     label: "Gen IX",
-    start: 905,
+    start: 906,
     end: 1025,
   },
 ];

@@ -13,11 +13,11 @@ import {
 import { firebaseConfig, isAuth } from "../Firebase-config";
 import { initializeApp } from "firebase/app";
 import useSound from "use-sound";
-import buttonsFx from "./sounds/pokequizsound3.mp3";
-import buttonsSuc from "./sounds/pokequizsound4.mp3";
-import revealSfx from "./sounds/pokequizsound5.mp3";
+import buttonsFx from "../../assets/sounds/pokequizsound3.mp3";
+import buttonsSuc from "../../assets/sounds/pokequizsound4.mp3";
+import revealSfx from "../../assets/sounds/pokequizsound5.mp3";
 import LoadingIndicator from "../LoadingIndicator";
-import { addImageProcess } from "../../helpers";
+import { addImageProcess, getRandomIntInclusive } from "../../helpers";
 
 const GenQuiz = ({ genSelect, setShowQuiz, playBg, playSfx, stopBg }) => {
   const [pokeQuest, setPokeQuest] = useState([]);
@@ -57,12 +57,6 @@ const GenQuiz = ({ genSelect, setShowQuiz, playBg, playSfx, stopBg }) => {
   });
 
   const navigate = useNavigate();
-
-  function getRandomIntInclusive(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-  }
 
   useEffect(() => {
     const getPokeGuess = async () => {

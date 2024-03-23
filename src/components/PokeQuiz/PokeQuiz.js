@@ -5,8 +5,8 @@ import { initializeApp } from "firebase/app";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { isAuth } from "../Firebase-config";
 import useSound from "use-sound";
-import soundFx from "./sounds/pokequizsound1.mp3";
-import music from "./sounds/pokequizsound2.mp3";
+import soundFx from "../../assets/sounds/pokequizsound1.mp3";
+import music from "../../assets/sounds/pokequizsound2.mp3";
 import GenQuiz from "./GenQuiz";
 import { pokemonGenerationIndexes } from "../../constants";
 
